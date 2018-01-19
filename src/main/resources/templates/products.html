@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Products</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Product ID</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th></th>
+            </tr>
+            <tr th:each="value:${listOfAllproducts}">
+                <td th:text="${value.productId}"></td>
+                <td th:text="${value.description}"></td>
+                <td th:text="${value.price}"></td>
+                <td th:text="${value.fotoImageUrl}"></td>
+                <td><a th:href="@{${'/product/'+value.productId}}">View</a></td>
+            </tr>
+        </table>
+    </div>
+    <h3><a href="#" th:href="@{/product/new}">Create new Product</a></h3>
+
+</div>
+
+
+</body>
+</html>
