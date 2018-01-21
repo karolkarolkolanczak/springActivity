@@ -18,6 +18,8 @@
 <body>
 
 <div class="container">
+    <div th:replace="fragments/layoutDesign ::layoutHeader"></div>
+
     <div>
         <table class="table table-striped">
             <tr>
@@ -40,6 +42,9 @@
 
 </div>
 
+<div th:replace="fragments/layoutDesign ::layoutFooter">
+    Layout footer
+</div>
 
 </body>
 </html>

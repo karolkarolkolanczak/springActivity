@@ -19,6 +19,7 @@
 </head>
 <body>
 <div class="container">
+
     <div class="layout" th:fragment="layoutHeader">
         <nav class="navbar navbar-default ">
             <!--<div style="position:absolute; top:5px; right:10px" >-->
@@ -35,8 +36,6 @@
         </nav>
         <div class="row"></div>
 
-        <h2>3</h2>
-
         <span th:text="#{hello}"></span>:
 
         <select id="locales">
@@ -45,6 +44,14 @@
             <option value="pl" th:text="#{polish}"></option>
             <option value="es" th:text="#{spanish}"></option>
         </select>
+    </div>
+
+    <div class="container" th:fragment="layoutFooter">
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text pull-left">© 2018 - Karol</p>
+            </div>
+        </div>
     </div>
 </div>
 
