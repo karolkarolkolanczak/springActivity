@@ -18,14 +18,13 @@
 <body>
 
 <div class="container">
-
     <div>
         <table class="table table-striped">
             <tr>
-                <th>Product ID</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image</th>
+                <th><p th:text="#{product.productId}"></p></th>
+                <th><p th:text="#{product.description}"></p></th>
+                <th><p th:text="#{product.price}"></p></th>
+                <th><p th:text="#{product.image}"></p></th>
                 <th></th>
             </tr>
             <tr th:each="value:${listOfAllproducts}">
@@ -33,7 +32,7 @@
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
                 <td th:text="${value.fotoImageUrl}"></td>
-                <td><a th:href="@{${'/product/'+value.productId}}">View</a></td>
+                <!--<td><a th:href="@{${'/product/'+value.productId}}"><p th:text="#{product.view}"></p></a></td>-->
             </tr>
         </table>
     </div>

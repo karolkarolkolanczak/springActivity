@@ -22,6 +22,8 @@ public class ProductController {
     @RequestMapping("/products")
     String showListOfAllProducts(Model model){
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
+        System.out.println("----DONE---");
+        System.out.println("----DONE-- 2-");
         return "products";
     }
 
