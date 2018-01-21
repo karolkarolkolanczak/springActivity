@@ -14,6 +14,10 @@ public class ProductServiceImpl implements ProductService {
 
     private List<Product> listOfAllProducts;
 
+    public ProductServiceImpl() {
+        getListOfAllProducts();
+    }
+
     @Override
     public List<Product> getListOfAllProducts() {
         listOfAllProducts=new ArrayList<>();
@@ -51,7 +55,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(Integer productId) {
-        return null;
+        Product product=new Product();
+
+        for(Product value:listOfAllProducts){
+            if(value.getProductId()==productId){
+                product=value;
+            }
+        }
+        return product;
     }
 
     @Override

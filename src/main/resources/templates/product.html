@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <title>Products</title>
+    <title>Product</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -20,6 +20,8 @@
 <div class="container">
     <div th:replace="fragments/layoutDesign ::layoutHeader"></div>
 
+    <h2 th:text="#{product.details}"></h2>
+
     <div>
         <table class="table table-striped">
             <tr>
@@ -29,16 +31,15 @@
                 <th><p th:text="#{product.image}"></p></th>
                 <th></th>
             </tr>
-            <tr th:each="value:${listOfAllproducts}">
+            <tr th:each="value:${productById}">
                 <td th:text="${value.productId}"></td>
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
                 <td th:text="${value.fotoImageUrl}"></td>
-                <td><a th:href="@{${'/product/'+value.productId}}"><p th:text="#{product.view}"></p></a></td>
             </tr>
         </table>
     </div>
-    <h3><a href="#" th:href="@{/product/new}">Create new Product</a></h3>
+    <h3><a href="#" th:href="@{/products}">Back</a></h3>
 
 </div>
 

@@ -20,7 +20,7 @@
 <body>
 <div class="container">
 
-    <div class="layout" th:fragment="layoutHeader">
+    <div th:fragment="layoutHeader">
         <nav class="navbar navbar-default ">
             <!--<div style="position:absolute; top:5px; right:10px" >-->
             <!--Welcome Admin: '<b><%=user.getLogin()%></b>'</br>-->
@@ -46,13 +46,13 @@
         </select>
     </div>
 
-    <div class="container" th:fragment="layoutFooter">
+    <div  th:fragment="layoutFooter">
         <div class="navbar navbar-default navbar-fixed-bottom">
             <div class="container">
                 <p class="navbar-text pull-left">© 2018 - Karol</p>
             </div>
         </div>
-    </div>
+    </div >
 </div>
 
 </body>
