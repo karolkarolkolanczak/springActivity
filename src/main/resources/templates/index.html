@@ -20,34 +20,25 @@
 <body>
 <div class="container">
 
-<nav class="navbar navbar-default ">
-    <!--<div style="position:absolute; top:5px; right:10px" >-->
-    <!--Welcome Admin: '<b><%=user.getLogin()%></b>'</br>-->
-    <!--</div>-->
-    <div style="position:absolute; top:30px; right:10px" >
-        <!--<form:form action="LogOut" method="get">-->
-            <!--<button type="submit" class="btn btn-default">log out</button>-->
-        <!--</form:form>-->
-    </div>
-    <div style="margin: 20px">
-        <h2>ADMINISTRATOR PANEL</h2>
-    </div>
-</nav>
-<div class="row"></div>
-    <h1 th:text="#{hello}"></h1>
-    <h1 th:text="#{product.price}">Courses Headline</h1>
-    <h1 th:text="#{product.productId}">Courses Headline</h1>
-    <span th:text="#{product.image}">ff</span>
-    <h2>Compile</h2>
-    <h2>3</h2>
+<div class="layout" th:replace="fragments/layoutDesign ::layoutHeader" >
+ffff
 </div>
-<span th:text="#{hello}"></span>:
-<select id="locales">
-    <option value=""></option>
-    <option value="en" th:text="#{english}"></option>
-    <option value="pl" th:text="#{polish}"></option>
-    <option value="es" th:text="#{spanish}"></option>
-</select>
+
+
+
+    <!--<select id="locales">-->
+        <!--<option value=""></option>-->
+        <!--<option value="en" th:text="#{english}"></option>-->
+        <!--<option value="pl" th:text="#{polish}"></option>-->
+        <!--<option value="es" th:text="#{spanish}"></option>-->
+    <!--</select>-->
+
+
+
+
+</div>
+
+
 
 </body>
 </html>
