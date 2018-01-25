@@ -2,22 +2,30 @@ package com.springactivity.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.math.BigDecimal;
 /**
  * Created by a on 18/01/2018.
  */
+@Entity
 public class Product {
-    private Integer productId;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long productId;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private String fotoImageUrl;
-    private List<ProductCategory> productCategoryList=new ArrayList<>();
+    // not mapping below
+//    private List<ProductCategory> productCategoryList=new ArrayList<>();
 
     public Product() {
     }
 
-    public Product(Integer productId, String name, String description, double price, String fotoImageUrl) {
+    public Product(Long productId, String name, String description, BigDecimal price, String fotoImageUrl) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -25,11 +33,11 @@ public class Product {
         this.fotoImageUrl = fotoImageUrl;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -49,11 +57,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal  getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

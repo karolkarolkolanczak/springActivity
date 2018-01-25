@@ -10,7 +10,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getListOfAllProducts();
 
-    Product getProductById(Integer productId);
+    Product getProductById(Long productId);
 
     Product saveOrUpdateProduct(Product product);
 

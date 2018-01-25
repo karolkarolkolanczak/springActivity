@@ -29,7 +29,7 @@ public class ProductController {
     }
 
     @RequestMapping("/product/{id}")
-    String getProductById(@PathVariable Integer id, Model model){
+    String getProductById(@PathVariable Long id, Model model){
         model.addAttribute("productById", productService.getProductById(id));
         return "product";
     }

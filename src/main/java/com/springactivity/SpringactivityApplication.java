@@ -2,14 +2,18 @@ package com.springactivity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-public class SpringactivityApplication {
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan({"com.springactivity.config","com.springactivity.controllers","com.springactivity.model","com.springactivity.services"})
+@EnableJpaRepositories("com.springactivity.repositories")
+public class SpringactivityApplication  {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ctx=SpringApplication.run(SpringactivityApplication.class, args);
+		SpringApplication.run(SpringactivityApplication.class, args);
 
 	}
 }

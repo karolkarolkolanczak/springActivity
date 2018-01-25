@@ -35,7 +35,9 @@
                 <td th:text="${value.productId}"></td>
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
-                <td th:text="${value.fotoImageUrl}"></td>
+                <td>
+                    <img src="../static/images/burst.shopify.com/shoe1.jpg" th:src="@{'/images/burst.shopify.com/shoe'+${value.productId}+'.jpg'}" class="center-block"/>
+                </td>
             </tr>
         </table>
     </div>
