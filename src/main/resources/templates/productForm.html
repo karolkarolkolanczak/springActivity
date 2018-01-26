@@ -27,6 +27,7 @@
     <h2>Add new product</h2>
 
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post">
+        <input type="hidden" th:field="*{productFormId}"/>
         <div class="form-group">
             <label class="col-sm-2 control-label">Product name:</label>
             <div class="col-sm-5">

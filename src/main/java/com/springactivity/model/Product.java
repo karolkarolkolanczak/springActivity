@@ -1,11 +1,6 @@
 package com.springactivity.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 /**
  * Created by a on 18/01/2018.
@@ -13,7 +8,12 @@ import java.math.BigDecimal;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    as org.hibernate.dialect.Oracle10gDialect does not support identity key generation
+
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @SequenceGenerator(name = "id_Sequence",sequenceName = "ID_SEQ")
+
     private Long productId;
     private String name;
     private String description;
@@ -25,8 +25,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long productId, String name, String description, BigDecimal price, String fotoImageUrl) {
-        this.productId = productId;
+    public Product(String name, String description, BigDecimal price, String fotoImageUrl) {
         this.name = name;
         this.description = description;
         this.price = price;
