@@ -79,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product saveOrUpdateProduct(Product product) {
         productRepository.save(product);
-        return product;
+        return null;
     }
 
     @Override
