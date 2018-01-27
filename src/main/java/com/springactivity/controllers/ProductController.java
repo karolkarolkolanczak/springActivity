@@ -46,14 +46,18 @@ public class ProductController {
     }
 
     @RequestMapping("/productFormSubmit")
-    String addNewProduct(ProductForm productForm){
+    String addNewProduct(ProductForm productForm ){
         Product product=new Product();
         product.setName(productForm.getName());
         product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
-
+        // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'
+        Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());;
+        product.setImage(image);
         productService.saveOrUpdateProduct(product);
         return "index";
     }
+
+
 
 }

@@ -1,5 +1,7 @@
 package com.springactivity.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
 /**
@@ -10,6 +12,7 @@ public class ProductForm {
     private String name;
     private String description;
     private BigDecimal price;
+    private MultipartFile file;
 
     public Long getProductFormId() {
         return productFormId;
@@ -41,5 +44,13 @@ public class ProductForm {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
