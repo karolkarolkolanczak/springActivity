@@ -11,10 +11,8 @@ public class Product {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    as org.hibernate.dialect.Oracle10gDialect does not support identity key generation
-
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence",sequenceName = "ID_SEQ")
-
     private Long productId;
     private String name;
     private String description;
