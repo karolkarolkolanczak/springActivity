@@ -33,14 +33,17 @@
                 <td th:text="${value.productId}"></td>
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
-                <td th:text="${value.fotoImageUrl}"></td>
-                <td><img src="../static/images/burst.shopify.com/shoe1.jpg" width="200" height="200"
-                th:src="@{'/product/' + ${value.productId} + '/image'}"/></td>
+                <td>
+                    <a th:href="@{${'/product/'+value.productId}}">
+                        <img src="../static/images/burst.shopify.com/shoe1.jpg" width="50" height="50"
+                        th:src="@{'/product/' + ${value.productId} + '/image'}"/>
+                    </a>
+                </td>
                 <td><a th:href="@{${'/product/'+value.productId}}"><p th:text="#{product.view}"></p></a></td>
             </tr>
         </table>
     </div>
-    <h3><a href="#" th:href="@{/product/new}">Create new Product</a></h3>
+    <h3><a href="#" th:href="@{/productForm}">Add new Product</a></h3>
 
 </div>
 

@@ -62,7 +62,7 @@ public class ProductController {
         Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());;
         product.setImage(image);
         productService.saveOrUpdateProduct(product);
-        return "index";
+        return "redirect:products";
     }
 
     @GetMapping("product/{id}/image")

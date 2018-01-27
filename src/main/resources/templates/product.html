@@ -28,15 +28,14 @@
                 <th><p th:text="#{product.productId}"></p></th>
                 <th><p th:text="#{product.description}"></p></th>
                 <th><p th:text="#{product.price}"></p></th>
-                <th><p th:text="#{product.image}"></p></th>
-                <th></th>
+                <th style="text-align:center"><p th:text="#{product.image}"></p></th>
             </tr>
             <tr th:each="value:${productById}">
                 <td th:text="${value.productId}"></td>
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
-                <td>
-                    <img src="../static/images/burst.shopify.com/shoe1.jpg" th:src="@{'/images/burst.shopify.com/shoe'+${value.productId}+'.jpg'}" class="center-block"/>
+                <td><img src="../static/images/burst.shopify.com/shoe1.jpg" width="500" height="500"
+                         th:src="@{'/product/' + ${value.productId} + '/image'}" class="center-block"/>
                 </td>
             </tr>
         </table>
