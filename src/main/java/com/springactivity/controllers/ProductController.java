@@ -30,6 +30,7 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
+        productService.dataBaseProductInitialList();
     }
 
     @RequestMapping("/products")
@@ -59,7 +60,7 @@ public class ProductController {
         product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
         // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'
-        Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());;
+        Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
         product.setImage(image);
         productService.saveOrUpdateProduct(product);
         return "redirect:products";

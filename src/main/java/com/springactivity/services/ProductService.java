@@ -18,4 +18,6 @@ public interface ProductService {
     Product editProduct(Product product);
 
     Byte[] convertFromMultipartFileToByteFormatFile(MultipartFile file);
+
+    void dataBaseProductInitialList();
 }

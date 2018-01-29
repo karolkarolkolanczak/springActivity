@@ -9,10 +9,11 @@ import java.math.BigDecimal;
 @Entity
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    as org.hibernate.dialect.Oracle10gDialect does not support identity key generation
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence",sequenceName = "ID_SEQ")
+//    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+//    @SequenceGenerator(name = "id_Sequence",sequenceName = "ID_SEQ")
     private Long productId;
     private String name;
     private String description;
@@ -31,6 +32,14 @@ public class Product {
         this.description = description;
         this.price = price;
         this.fotoImageUrl = fotoImageUrl;
+        this.image = image;
+    }
+
+    public Product(Long productId, String name, String description, BigDecimal price, Byte[] image) {
+        this.productId=productId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
         this.image = image;
     }
 

@@ -24,6 +24,7 @@
         <table class="table table-striped">
             <tr>
                 <th><p th:text="#{product.productId}"></p></th>
+                <th><p th:text="#{product.name}"></p></th>
                 <th><p th:text="#{product.description}"></p></th>
                 <th><p th:text="#{product.price}"></p></th>
                 <th><p th:text="#{product.image}"></p></th>
@@ -31,6 +32,7 @@
             </tr>
             <tr th:each="value:${listOfAllproducts}">
                 <td th:text="${value.productId}"></td>
+                <td th:text="${value.name}"></td>
                 <td th:text="${value.description}"></td>
                 <td th:text="${value.price}"></td>
                 <td>
