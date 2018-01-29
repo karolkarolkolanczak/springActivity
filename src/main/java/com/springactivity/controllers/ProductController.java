@@ -63,7 +63,7 @@ public class ProductController {
         Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
         product.setImage(image);
         productService.saveOrUpdateProduct(product);
-        return "redirect:products";
+        return "redirect:/products";
     }
 
     @GetMapping("product/{id}/image")
@@ -84,4 +84,9 @@ public class ProductController {
         }
     }
 
+    @RequestMapping("/productDelete/{id}")
+    String deleteProductById(@PathVariable Long id){
+        productService.deleteProductById(id);
+        return "redirect:/products";
+    }
 }

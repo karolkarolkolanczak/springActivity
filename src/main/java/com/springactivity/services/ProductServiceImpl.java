@@ -48,14 +48,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveOrUpdateProduct(Product product) {
+    public void saveOrUpdateProduct(Product product) {
         productRepository.save(product);
-        return null;
     }
 
     @Override
     public Product editProduct(Product product) {
         return null;
+    }
+
+    @Override
+    public void deleteProductById(Long productId) {
+        productRepository.delete(getProductById(productId));
     }
 
     @Override
@@ -70,7 +74,6 @@ public class ProductServiceImpl implements ProductService {
                 byteObjects[i++] = b;
             }
         } catch (IOException e) {
-            //todo handle better
             System.out.println("Exception From 'convertFromMultipartFileToByteFormatFile': "+e);
         }
         return byteObjects;

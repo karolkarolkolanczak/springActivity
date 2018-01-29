@@ -13,9 +13,11 @@ public interface ProductService {
 
     Product getProductById(Long productId);
 
-    Product saveOrUpdateProduct(Product product);
+    void saveOrUpdateProduct(Product product);
 
     Product editProduct(Product product);
+
+    void deleteProductById(Long productId);
 
     Byte[] convertFromMultipartFileToByteFormatFile(MultipartFile file);
 
