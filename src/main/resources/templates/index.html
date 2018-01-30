@@ -14,7 +14,16 @@
 
     <link href="../../static/css/spring-core.css"
           th:href="@{../spring-core.css}" rel="stylesheet" media="screen"/>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 
 </head>
 <body>

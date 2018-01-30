@@ -13,7 +13,16 @@
 
     <link href="../../static/css/spring-core.css"
           th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -51,6 +60,7 @@
                 </td>
             </tr>
         </table>
+        <h5 style="text-align:right" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
     </div>
     <h3><a href="@{${'/product/'+value.productId}}" th:href="@{/productForm}">Add new Product</a></h3>
 

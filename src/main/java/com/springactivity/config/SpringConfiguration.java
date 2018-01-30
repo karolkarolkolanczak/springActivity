@@ -14,10 +14,7 @@ import java.util.Locale;
  * Created by a on 20/01/2018.
  */
 @Configuration
-
 public class SpringConfiguration extends WebMvcConfigurerAdapter {
-
-
 
     @Bean
     public LocaleResolver localeResolver(){

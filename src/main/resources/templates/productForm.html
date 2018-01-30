@@ -14,7 +14,16 @@
 
     <link href="../../static/css/spring-core.css"
           th:href="@{../spring-core.css}" rel="stylesheet" media="screen"/>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -24,36 +33,36 @@
         Layout header
     </div>
 
-    <h2>Add new product</h2>
+    <h2 th:text="#{product.add}">Add new product</h2>
 
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{productFormId}"/>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Product name:</label>
+            <label class="col-sm-2 control-label" th:text="#{product.name}+': '">Product name:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" th:field="*{name}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Description:</label>
+            <label class="col-sm-2 control-label" th:text="#{product.description}+': '">Description:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{description}"/>
+                <input type="text" class="form-control" th:field="*{description}" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Price:</label>
+            <label class="col-sm-2 control-label" th:text="#{product.price}+': '">Price:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" th:field="*{price}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Image:</label>
+            <label class="col-sm-2 control-label" th:text="#{product.image}+': '">Image:</label>
             <div class="col-sm-5">
                 <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>
             </div>
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" th:text="#{submit}">Submit</button>
         </div>
     </form>
 
