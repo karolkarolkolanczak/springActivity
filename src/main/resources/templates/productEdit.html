@@ -33,37 +33,48 @@
         Layout header
     </div>
 
-    <h2 th:text="#{product.add}">Add new product</h2>
+    <h2 th:text="#{product.edit}">Edit product</h2>
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" th:text="#{product.name}+': '">Product name:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{name}"/>
+        <div class="row col-md-7">
+            <input type="hidden" th:field="*{productId}"/>
+            <div class="form-group" >
+                <label class="col-sm-3 control-label" th:text="#{product.name}+': '">Product name:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" th:text="#{product.description}+': '">Description:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{description}" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label" th:text="#{product.description}+': '">Description:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{description}" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" th:text="#{product.price}+': '">Price:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{price}"/>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" th:text="#{product.price}+': '">Price:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{price}"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" th:text="#{product.image}+': '">Image:</label>
-            <div class="col-sm-5">
+            <input type="hidden" th:field="*{image}"/>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" th:text="#{product.image}+': '">Image:</label>
+                <div class="col-sm-5">
                 <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>
             </div>
         </div>
-        <div class="row">
-            <button type="submit" class="btn btn-default" th:text="#{submit}">Submit</button>
+        <div class="form-group col-md-offset-1 col-md-3 ">
+            <img src="../static/images/burst.shopify.com/shoe1.jpg" width="500" height="500"
+             th:src="@{'/product/' + ${productForm.productId} + '/image'}"/>
         </div>
+
+        <!--<div class="row"></div>-->
     </form>
+
 
     <div th:replace="fragments/layoutDesign ::layoutFooter">
         Layout footer

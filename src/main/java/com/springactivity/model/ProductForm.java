@@ -8,18 +8,19 @@ import java.math.BigDecimal;
  * Created by a on 26/01/2018.
  */
 public class ProductForm {
-    private Long productFormId;
+    private Long productId;
     private String name;
     private String description;
     private BigDecimal price;
     private MultipartFile file;
+    private Byte[] image;
 
-    public Long getProductFormId() {
-        return productFormId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProductFormId(Long productFormId) {
-        this.productFormId = productFormId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -52,5 +53,13 @@ public class ProductForm {
 
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 }

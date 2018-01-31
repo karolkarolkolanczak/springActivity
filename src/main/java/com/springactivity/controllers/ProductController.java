@@ -7,13 +7,11 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.*;
+import javax.validation.constraints.Null;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +34,6 @@ public class ProductController {
     @RequestMapping("/products")
     String showListOfAllProducts(Model model){
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
-        System.out.println("----DONE---");
         return "products";
     }
 
@@ -53,16 +50,34 @@ public class ProductController {
         return "productForm";
     }
 
-    @RequestMapping("/productFormSubmit")
-    String addNewProduct(ProductForm productForm ){
+    @RequestMapping("/editProduct/{id}")
+    String editProduct(@PathVariable Long id, Model model){
         Product product=new Product();
+        product=productService.getProductById(id);
+        model.addAttribute("productForm", product);
+        return "productEdit";
+    }
+
+    @RequestMapping("/productFormSubmit")
+    String addNewProduct(@ModelAttribute ProductForm productForm ){
+        Product product=new Product();
+        if(productForm.getProductId()!=null){
+            product.setProductId(productForm.getProductId());
+        }
         product.setName(productForm.getName());
         product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
-        // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'
-        Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
-        product.setImage(image);
-        productService.saveOrUpdateProduct(product);
+        System.out.println("----------"+productForm.getFile().getSize());
+        System.out.println(productForm.getFile().getSize()==0);
+        if(productForm.getFile()!=null && productForm.getImage() != null){
+            // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'
+            Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
+            product.setImage(image);
+        }
+        if(productForm.getImage() != null && productForm.getFile().getSize()==0){
+            product.setImage(productForm.getImage());
+        }
+            productService.saveOrUpdateProduct(product);
         return "redirect:/products";
     }
 

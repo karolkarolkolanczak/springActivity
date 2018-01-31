@@ -1,5 +1,8 @@
 package com.springactivity.model;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -21,6 +24,8 @@ public class Product {
     private String fotoImageUrl;
     @Lob
     private Byte[] image;
+    @Transient
+    private MultipartFile file;
     // not mapping below
 //    private List<ProductCategory> productCategoryList=new ArrayList<>();
 
@@ -89,5 +94,13 @@ public class Product {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }

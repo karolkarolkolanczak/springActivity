@@ -29,6 +29,8 @@
 <div class="container">
     <div th:replace="fragments/layoutDesign ::layoutHeader"></div>
 
+    <h2 th:text="#{product.table}">Table of products</h2>
+    <br />
     <div>
         <table class="table table-striped">
             <tr>
@@ -37,6 +39,7 @@
                 <th><p th:text="#{product.description}"></p></th>
                 <th><p th:text="#{product.price}"></p></th>
                 <th><p th:text="#{product.image}"></p></th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -52,6 +55,7 @@
                     </a>
                 </td>
                 <td><a th:href="@{${'/product/'+value.productId}}"><p th:text="#{product.view}"></p></a></td>
+                <td><a th:href="@{${'/editProduct/'+value.productId}}"><p th:text="#{edit}"></p></a></td>
                 <td>
                     <a th:href="@{${'/productDelete/'+value.productId}}">
                       <svg id="icon-delete" fill="red" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +66,7 @@
         </table>
         <h5 style="text-align:right" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
     </div>
-    <h3><a href="@{${'/product/'+value.productId}}" th:href="@{/productForm}">Add new Product</a></h3>
+    <h3><a th:href="@{/productForm}">Add new Product</a></h3>
 
 </div>
 
