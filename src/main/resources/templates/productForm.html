@@ -36,22 +36,41 @@
     <h2 th:text="#{product.add}">Add new product</h2>
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
-        <div class="form-group">
+
+        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+            <p th:text="#{product.hasErrors}">Error message</p>
+        </div>
+        <div class="form-group" th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.name}+': '">Product name:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{name}"/>
+                <input type="text" class="form-control" th:field="*{name}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('name')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('name')}" th:text="${err}" />
+                       </ul>
+                </span>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" th:class="${#fields.hasErrors('description')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.description}+': '">Description:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{description}" />
+                <input type="text" class="form-control" th:field="*{description}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('name')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('description')}" th:text="${err}" />
+                       </ul>
+                </span>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" th:class="${#fields.hasErrors('price')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.price}+': '">Price:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{price}"/>
+                <input type="text" class="form-control" th:field="*{price}"  th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('price')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('price')}" th:text="${err}" />
+                       </ul>
+                </span>
             </div>
         </div>
         <div class="form-group">

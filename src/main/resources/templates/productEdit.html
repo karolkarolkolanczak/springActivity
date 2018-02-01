@@ -70,11 +70,9 @@
         <div class="form-group col-md-offset-1 col-md-3 ">
             <img src="../static/images/burst.shopify.com/shoe1.jpg" width="500" height="500"
              th:src="@{'/product/' + ${productForm.productId} + '/image'}"/>
+            <h5 style="text-align:start" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
         </div>
-
-        <!--<div class="row"></div>-->
     </form>
-
 
     <div th:replace="fragments/layoutDesign ::layoutFooter">
         Layout footer

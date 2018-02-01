@@ -4,6 +4,7 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**

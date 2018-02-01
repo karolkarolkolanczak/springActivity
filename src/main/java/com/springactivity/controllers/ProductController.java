@@ -7,10 +7,12 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Null;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -58,8 +60,11 @@ public class ProductController {
         return "productEdit";
     }
 
-    @RequestMapping("/productFormSubmit")
-    String addNewProduct(@ModelAttribute ProductForm productForm ){
+    @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
+    String addNewProduct(@Valid @ModelAttribute ProductForm productForm, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "productForm";
+        }
         Product product=new Product();
         if(productForm.getProductId()!=null){
             product.setProductId(productForm.getProductId());
@@ -67,8 +72,7 @@ public class ProductController {
         product.setName(productForm.getName());
         product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
-        System.out.println("----------"+productForm.getFile().getSize());
-        System.out.println(productForm.getFile().getSize()==0);
+
         if(productForm.getFile()!=null && productForm.getImage() != null){
             // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'
             Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());

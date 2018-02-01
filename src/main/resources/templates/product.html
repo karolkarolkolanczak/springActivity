@@ -38,12 +38,12 @@
                 <td th:text="${value.price}"></td>
                 <td><img src="../static/images/burst.shopify.com/shoe1.jpg" width="500" height="500"
                          th:src="@{'/product/' + ${value.productId} + '/image'}" class="center-block"/>
+                    <h5 style="text-align:center" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
                 </td>
             </tr>
         </table>
     </div>
-    <h3><a href="#" th:href="@{/products}">Back</a></h3>
-    <h5 style="text-align:right" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
+   <h3><a href="#" th:href="@{/products}">Back</a></h3>
 </div>
 
 <div th:replace="fragments/layoutDesign ::layoutFooter">
