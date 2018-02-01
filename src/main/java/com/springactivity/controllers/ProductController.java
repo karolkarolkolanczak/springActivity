@@ -56,14 +56,24 @@ public class ProductController {
     String editProduct(@PathVariable Long id, Model model){
         Product product=new Product();
         product=productService.getProductById(id);
-        model.addAttribute("productForm", product);
+        ProductForm productForm=new ProductForm();
+        productForm.setProductId(product.getProductId());
+        productForm.setName(product.getName());
+        productForm.setDescription(product.getDescription());
+        productForm.setPrice(product.getPrice());
+        productForm.setImage(product.getImage());
+        productForm.setDataProductFromDatabase(true);
+        model.addAttribute("productForm", productForm);
         return "productEdit";
     }
 
     @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
     String addNewProduct(@Valid @ModelAttribute ProductForm productForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "productForm";
+            if(productForm.isDataProductFromDatabase()){
+                return "productEdit";
+            }
+            else return "productForm";
         }
         Product product=new Product();
         if(productForm.getProductId()!=null){

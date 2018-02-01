@@ -24,6 +24,7 @@ public class ProductForm {
     private BigDecimal price;
     private MultipartFile file;
     private Byte[] image;
+    private boolean dataProductFromDatabase;
 
     public Long getProductId() {
         return productId;
@@ -71,5 +72,13 @@ public class ProductForm {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public boolean isDataProductFromDatabase() {
+        return dataProductFromDatabase;
+    }
+
+    public void setDataProductFromDatabase(boolean dataProductFromDatabase) {
+        this.dataProductFromDatabase = dataProductFromDatabase;
     }
 }

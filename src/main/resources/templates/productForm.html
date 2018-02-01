@@ -36,7 +36,6 @@
     <h2 th:text="#{product.add}">Add new product</h2>
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
-
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p th:text="#{product.hasErrors}">Error message</p>
         </div>
@@ -65,7 +64,7 @@
         <div class="form-group" th:class="${#fields.hasErrors('price')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.price}+': '">Price:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" th:field="*{price}"  th:errorclass="has-error"/>
+                <input type="text" class="form-control" th:field="*{price}" th:errorclass="has-error"/>
                 <span class="help-block" th:if="${#fields.hasErrors('price')}">
                        <ul>
                            <li th:each="err : ${#fields.errors('price')}" th:text="${err}" />
