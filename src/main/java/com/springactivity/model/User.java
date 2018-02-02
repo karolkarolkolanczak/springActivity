@@ -1,15 +1,25 @@
 package com.springactivity.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * Created by a on 21/01/2018.
  */
 public class User {
     private Integer userId;
-    private String firstName;
-    private String lastName;
-    private String login;
+    @NotEmpty
+    private String username;
+    @NotEmpty
     private String password;
     private String email;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -17,30 +27,6 @@ public class User {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {
