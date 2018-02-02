@@ -37,7 +37,7 @@
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-            <p th:text="#{product.hasErrors}">Error message</p>
+            <p th:text="#{hasErrors}">Error message</p>
         </div>
         <div class="row col-md-7">
             <input type="hidden" th:field="*{productId}"/>

@@ -35,9 +35,9 @@
 
     <h2 th:text="#{user.login.form}">Login Form</h2>
     <br />
-    <form class="form-horizontal" th:object="${loginForm}" th:action="@{/loginFormSubmit}" method="post">
+    <form class="form-horizontal" th:object="${user}" th:action="@{/loginFormSubmit}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-            <p th:text="#{product.hasErrors}">Error message</p>
+            <p th:text="#{hasErrors}">Error message</p>
         </div>
         <div class="form-group" th:class="${#fields.hasErrors('username')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{user.username}+': '">Username:</label>

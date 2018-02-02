@@ -37,7 +37,7 @@
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-            <p th:text="#{product.hasErrors}">Error message</p>
+            <p th:text="#{hasErrors}">Error message</p>
         </div>
         <div class="form-group" th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.name}+': '">Product name:</label>
