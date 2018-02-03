@@ -29,7 +29,33 @@
 <body>
 <div class="container">
 
-    <div th:fragment="layoutHeader">
+    <div th:fragment="layoutUserHeader">
+        <nav class="navbar navbar-default ">
+            <!--<div style="position:absolute; top:5px; right:10px" >-->
+            <!--Welcome Admin: '<b><%=user.getLogin()%></b>'</br>-->
+            <!--</div>-->
+            <div style="position:absolute; top:30px; right:10px" >
+                <!--<form:form action="LogOut" method="get">-->
+                <!--<button type="submit" class="btn btn-default">log out</button>-->
+                <!--</form:form>-->
+            </div>
+            <div style="margin: 20px">
+                <h2 th:text="#{shop.name}"></h2>
+                <h5 th:text="#{outdoor.shop}"></h5>
+            </div>
+            <div style="position:absolute; top:5px; right:10px" ><span th:text="#{select.language}"></span>:
+                <select id="locales">
+                    <option></option>
+                    <option th:value="en" th:text="#{english}" ></option>
+                    <option th:value="pl" th:text="#{polish}" ></option>
+                    <option th:value="es" th:text="#{spanish}"></option>
+                </select>
+            </div>
+        </nav>
+        <div class="row"></div>
+    </div>
+
+    <div th:fragment="layoutAdminHeader">
         <nav class="navbar navbar-default ">
             <!--<div style="position:absolute; top:5px; right:10px" >-->
             <!--Welcome Admin: '<b><%=user.getLogin()%></b>'</br>-->
