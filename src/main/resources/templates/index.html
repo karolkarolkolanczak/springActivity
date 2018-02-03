@@ -29,20 +29,25 @@
 <body>
 <div class="container">
 
-<div th:replace="fragments/layoutDesign ::layoutHeader" >
-Layout header
+    <div th:replace="fragments/layoutDesign ::layoutHeader" >
+        Layout header
+    </div>
+    <br />
+
+    <ul class="list-group">
+        <div  th:each="product,it : ${listOfAllproducts}">
+            <div th:replace="fragments/layoutDesign :: productdiv"></div>
+        </div>
+    </ul>
+
+    <div class="row"></div>
+    <h5 style="text-align:center" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
+
+    <div th:replace="fragments/layoutDesign ::layoutFooter">
+        Layout footer
+    </div>
+
 </div>
-<br />
-INDEX PAGE
-
-
-<div th:replace="fragments/layoutDesign ::layoutFooter">
-Layout footer
-</div>
-
-</div>
-
-
 
 </body>
 </html>
