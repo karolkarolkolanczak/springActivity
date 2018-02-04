@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -17,17 +18,13 @@ import javax.validation.Valid;
 public class LoginController {
 
     @RequestMapping("/loginForm")
-    String showloginForm(Model model){
-        User user=new User();
-        model.addAttribute("user",user);
+    String showloginForm(){
         return "loginForm";
     }
 
-    @RequestMapping(value = "/loginFormSubmit", method = RequestMethod.POST)
-    String SubmitLoginForm(@Valid @ModelAttribute User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    @RequestMapping("/login-error")
+    String loginError( Model model){
+        model.addAttribute("loginError", true);
             return "loginForm";
-        }
-        return "redirect:/products";
     }
 }

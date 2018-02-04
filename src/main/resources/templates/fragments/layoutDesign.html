@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
     <title>WELCOME</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
@@ -43,13 +42,37 @@
                 <h2 th:text="#{shop.name}"></h2>
                 <h5 th:text="#{outdoor.shop}"></h5>
             </div>
-            <div style="position:absolute; top:5px; right:10px" ><span th:text="#{select.language}"></span>:
+            <div style="position:absolute; top:5px; right:150px" ><span th:text="#{select.language}"></span>:
                 <select id="locales">
                     <option></option>
                     <option th:value="en" th:text="#{english}" ></option>
                     <option th:value="pl" th:text="#{polish}" ></option>
                     <option th:value="es" th:text="#{spanish}"></option>
                 </select>
+            </div>
+            <div style="position:absolute; top:5px; right:10px" sec:authorize="!isAuthenticated()">
+                <form th:action="@{/loginForm}" method="get">
+                    <button type="submit" class="btn btn-primary" th:text="#{user.login}">Login</button>
+                    <button type="submit" class="btn btn-default" th:text="#{user.login}">Login</button>
+                </form>
+            </div>
+            <div style="position:absolute; top:5px; right:10px" sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-primary" th:text="#{user.logout}">Logout</button>
+                    <button type="submit" class="btn btn-default" th:text="#{user.logout}">Logout</button>
+                </form>
+            </div>
+            <div class="row" sec:authorize="isAuthenticated()">
+                <div class="col-md-10 col-md-offset-2">
+                    <h2 style="color:green">User is Logged In</h2>
+                    Welcome, '<span sec:authentication="principal.username">userName</span>'
+                </div>
+            </div>
+            <div class="row" sec:authorize="!isAuthenticated()">
+                <div class="col-md-10 col-md-offset-2">
+                    <h2 style="color:red">User is Logged Out</h2>
+                    <!--<p sec:authentication="principal.username">userName</p>-->
+                </div>
             </div>
         </nav>
         <div class="row"></div>
@@ -76,18 +99,19 @@
                     <option th:value="es" th:text="#{spanish}"></option>
                 </select>
             </div>
+            <div class="row" sec:authorize="isAuthenticated()">
+                <div class="col-md-10 col-md-offset-2">
+                    <h2 style="color:green">User is Logged In</h2>
+                </div>
+            </div>
+            <div class="row" sec:authorize="!isAuthenticated()">
+                <div class="col-md-10 col-md-offset-2">
+                    <h2 style="color:red">User is Logged Out</h2>
+                </div>
+            </div>
         </nav>
         <div class="row"></div>
     </div>
-
-    <div  th:fragment="layoutFooter">
-        <br /><br /><br /><br />
-        <div class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <p class="navbar-text pull-left">© 2018 - Karol</p>
-            </div>
-        </div>
-    </div >
 
     <li class="list-group-item col-md-4" th:fragment="productdiv" >
         <div>
@@ -105,6 +129,15 @@
             </a>
         </div>
     </li>
+
+    <div  th:fragment="layoutFooter">
+        <br /><br /><br /><br />
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text pull-left">© 2018 - Karol</p>
+            </div>
+        </div>
+    </div >
 
 </div>
 
