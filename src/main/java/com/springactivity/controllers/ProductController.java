@@ -84,10 +84,14 @@ public class ProductController {
             Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
             product.setImage(image);
         }
-        if(productForm.getImage() != null && productForm.getFile().getSize()==0){
+        if( productForm.getFile().getSize()==0 && productForm.getImage() != null){
             product.setImage(productForm.getImage());
         }
-            productService.saveOrUpdateProduct(product);
+        if(productForm.getFile()!=null && productForm.getImage() == null){
+            Byte[] image=productService.convertFromMultipartFileToByteFormatFile(productForm.getFile());
+            product.setImage(image);
+        }
+        productService.saveOrUpdateProduct(product);
         return "redirect:/products";
     }
 
