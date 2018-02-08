@@ -27,6 +27,11 @@ public class Product {
     private Byte[] image;
     @Transient
     private MultipartFile file;
+    @OneToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_Features_Id")
+//    @JoinColumn indicates that this entity is the owner of the relationship
+//    (table has a column with a foreign key to the referenced table)
+    private ProductFeatures productFeatures;
     // not mapping below
 //    private List<ProductCategory> productCategoryList=new ArrayList<>();
 
@@ -103,5 +108,13 @@ public class Product {
 
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    public ProductFeatures getProductFeatures() {
+        return productFeatures;
+    }
+
+    public void setProductFeatures(ProductFeatures productFeatures) {
+        this.productFeatures = productFeatures;
     }
 }

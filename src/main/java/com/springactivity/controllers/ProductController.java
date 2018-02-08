@@ -1,6 +1,8 @@
 package com.springactivity.controllers;
 
+import com.springactivity.model.Gender;
 import com.springactivity.model.Product;
+import com.springactivity.model.ProductFeatures;
 import com.springactivity.model.ProductForm;
 import com.springactivity.services.ProductService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -78,6 +80,17 @@ public class ProductController {
         product.setName(productForm.getName());
         product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
+
+        ProductFeatures productFeatures=new ProductFeatures();
+productFeatures.setColor("green");
+productFeatures.setGender(Gender.FEMALE);
+productFeatures.setMaterial("polipropylen");
+productFeatures.setWeight(223);
+product.setProductFeatures(productFeatures);
+
+
+
+
 
         if(productForm.getFile()!=null && productForm.getImage() != null){
             // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'

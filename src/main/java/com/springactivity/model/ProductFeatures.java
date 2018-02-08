@@ -1,0 +1,71 @@
+package com.springactivity.model;
+
+import javax.persistence.*;
+
+/**
+ * Created by a on 07/02/2018.
+ */
+@Entity
+public class ProductFeatures {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long productFeaturesId;
+    private String color;
+    private String material;
+    private int weight;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    @OneToOne(mappedBy = "productFeatures")
+// Attribute mappedBy indicates that the entity in this side is the inverse of the relationship,
+// and the owner resides in the “other” entity.
+    private Product product;
+
+    public Long getProductFeaturesId() {
+        return productFeaturesId;
+    }
+
+    public void setProductFeaturesId(Long productFeaturesId) {
+        this.productFeaturesId = productFeaturesId;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}

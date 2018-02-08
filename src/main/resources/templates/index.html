@@ -29,6 +29,12 @@
 <div class="container">
 
     <div th:replace="fragments/layoutDesign ::layoutHeader">Layout header</div>
+
+    <div th:insert="fragments/layoutDesign  :: breadcrumb">
+        <ol class="breadcrumb container" style="width: 100%">
+            <li><a href="/" style="color:black" >Home</a></li>
+        </ol>
+    </div>
     <br />
 
     <ul class="list-group">

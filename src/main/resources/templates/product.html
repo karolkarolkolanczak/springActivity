@@ -31,6 +31,14 @@
 
     <div th:replace="fragments/layoutDesign ::layoutHeader">Layout header</div>
 
+    <div th:insert="fragments/layoutDesign  :: breadcrumb">
+        <ol class="breadcrumb container" style="width: 100%">
+            <li><a href="/" style="color:black" >Home</a></li>
+            <li><a href="#" th:href="@{/task}" style="color:black">Categoria produktu(buty)</a></li>
+            <li th:text="${productById.name}">Task</li>
+        </ol>
+    </div>
+
     <h2 th:text="#{product.details}"></h2>
     <br />
     <div>
