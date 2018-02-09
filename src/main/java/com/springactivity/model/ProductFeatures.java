@@ -16,9 +16,9 @@ public class ProductFeatures {
     private int weight;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    @OneToOne(mappedBy = "productFeatures")
-// Attribute mappedBy indicates that the entity in this side is the inverse of the relationship,
-// and the owner resides in the “other” entity.
+    // Attribute mappedBy indicates that the entity in this side is the inverse of the relationship,
+    // and the owner resides in the “other” entity.
+    @OneToOne(mappedBy = "productFeatures",cascade = CascadeType.ALL)
     private Product product;
 
     public Long getProductFeaturesId() {

@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by a on 18/01/2018.
@@ -32,8 +33,9 @@ public class Product {
 //    @JoinColumn indicates that this entity is the owner of the relationship
 //    (table has a column with a foreign key to the referenced table)
     private ProductFeatures productFeatures;
-    // not mapping below
-//    private List<ProductCategory> productCategoryList=new ArrayList<>();
+@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+@JoinColumn(name = "product_Category_Id")
+    private ProductCategory productCategory;
 
     public Product() {
     }
@@ -116,5 +118,13 @@ public class Product {
 
     public void setProductFeatures(ProductFeatures productFeatures) {
         this.productFeatures = productFeatures;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 }

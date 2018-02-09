@@ -1,9 +1,6 @@
 package com.springactivity.controllers;
 
-import com.springactivity.model.Gender;
-import com.springactivity.model.Product;
-import com.springactivity.model.ProductFeatures;
-import com.springactivity.model.ProductForm;
+import com.springactivity.model.*;
 import com.springactivity.services.ProductService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +85,9 @@ productFeatures.setMaterial("polipropylen");
 productFeatures.setWeight(223);
 product.setProductFeatures(productFeatures);
 
-
+        ProductCategory productCategory=new ProductCategory();
+        productCategory.setCategoryName("Kurtki");
+        product.setProductCategory(productCategory);
 
 
 

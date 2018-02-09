@@ -1,6 +1,7 @@
 package com.springactivity.services;
 
 import com.springactivity.model.Product;
+import com.springactivity.model.ProductFeatures;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

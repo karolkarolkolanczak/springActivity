@@ -1,25 +1,42 @@
 package com.springactivity.model;
 
+import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by a on 21/01/2018.
  */
+@Entity
 public class ProductCategory {
-    private Integer categoryId;
-    private String category;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long productCategoryId;
+    private String categoryName;
+    @OneToMany(mappedBy = "productCategory",
+        cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Product> productList;
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Long getProductCategoryId() {
+        return productCategoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setProductCategoryId(Long productCategoryId) {
+        this.productCategoryId = productCategoryId;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }
