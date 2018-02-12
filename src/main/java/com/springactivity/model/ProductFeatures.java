@@ -13,7 +13,7 @@ public class ProductFeatures {
     private Long productFeaturesId;
     private String color;
     private String material;
-    private int weight;
+    private Long weight;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     // Attribute mappedBy indicates that the entity in this side is the inverse of the relationship,
@@ -45,11 +45,11 @@ public class ProductFeatures {
         this.material = material;
     }
 
-    public int getWeight() {
+    public Long getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Long weight) {
         this.weight = weight;
     }
 

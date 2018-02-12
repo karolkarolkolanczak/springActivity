@@ -79,16 +79,49 @@
                 </select>
             </div>
         </div>
-
-        <div style="position:absolute; top:5px; right:250px" ><span th:text="#{select.language}"></span>:
-            <select id="locales">
-                <option></option>
-                <option th:value="en" th:text="#{english}" ></option>
-                <option th:value="pl" th:text="#{polish}" ></option>
-                <option th:value="es" th:text="#{spanish}"></option>
-            </select>
+        <div class="form-group" th:class="${#fields.hasErrors('color')}? 'form-group has-error' : 'form-group'">
+            <label class="col-sm-2 control-label" th:text="#{product.features.color}+': '">Product color:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" th:field="*{color}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('color')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('color')}" th:text="${err}" />
+                       </ul>
+                </span>
+            </div>
         </div>
-
+        <div class="form-group" th:class="${#fields.hasErrors('material')}? 'form-group has-error' : 'form-group'">
+            <label class="col-sm-2 control-label" th:text="#{product.features.material}+': '">Product material:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" th:field="*{material}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('material')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('material')}" th:text="${err}" />
+                       </ul>
+                </span>
+            </div>
+        </div>
+        <div class="form-group" th:class="${#fields.hasErrors('weight')}? 'form-group has-error' : 'form-group'">
+            <label class="col-sm-2 control-label" th:text="#{product.features.weight}+': '">Product weight:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" th:field="*{weight}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('weight')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('weight')}" th:text="${err}" />
+                       </ul>
+                </span>
+            </div>
+        </div>
+        <div class="form-group" th:class="${#fields.hasErrors('gender')}? 'form-group has-error' : 'form-group'">
+            <label class="col-sm-2 control-label" th:text="#{product.features.gender}+': '">Gender:</label>
+            <div class="dropdown col-sm-5">
+                <select class="form-control" id="gender" th:field="*{gender}">
+                    <option th:each="value : ${productForm.listOfGenders}"
+                            th:value="${value}"
+                            th:text="${value}">Gender</option>
+                </select>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" th:text="#{product.image}+': '">Image:</label>
             <div class="col-sm-5">

@@ -2,6 +2,7 @@ package com.springactivity.controllers;
 
 import com.springactivity.model.*;
 import com.springactivity.repositories.ProductCategoryRepository;
+import com.springactivity.services.GenderService;
 import com.springactivity.services.ProductCategoryService;
 import com.springactivity.services.ProductService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -25,12 +26,14 @@ public class ProductController {
 
     private ProductService productService;
     private ProductCategoryService productCategoryService;
+    private GenderService genderService;
     private List<ProductCategory> productCategoryList;
 
     @Autowired
-    public ProductController(ProductService productService,ProductCategoryService productCategoryService) {
+    public ProductController(ProductService productService,ProductCategoryService productCategoryService,GenderService genderService) {
         this.productService = productService;
         this.productCategoryService=productCategoryService;
+        this.genderService=genderService;
         productService.dataBaseProductInitialList();
     }
 
@@ -50,6 +53,7 @@ public class ProductController {
     String addNewProduct(Model model){
         ProductForm productForm =new ProductForm();
         productForm.setProductCategoryList(productService.getInitialProductCategoryList());
+        productForm.setListOfGenders(genderService.getListOfGenders());
         model.addAttribute("productForm",productForm );
         return "productForm";
     }
@@ -87,10 +91,10 @@ public class ProductController {
         product.setPrice(productForm.getPrice());
 
         ProductFeatures productFeatures=new ProductFeatures();
-        productFeatures.setColor("green");
-        productFeatures.setGender(Gender.FEMALE);
-        productFeatures.setMaterial("polipropylen");
-        productFeatures.setWeight(223);
+        productFeatures.setColor(productForm.getColor());
+        productFeatures.setMaterial(productForm.getMaterial());
+        productFeatures.setWeight(productForm.getWeight());
+        productFeatures.setGender(productForm.getGender());
         product.setProductFeatures(productFeatures);
 
         ProductCategory productCategory=new ProductCategory();

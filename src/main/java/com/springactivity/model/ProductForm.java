@@ -25,6 +25,17 @@ public class ProductForm {
     private BigDecimal price;
     private MultipartFile file;
     private Byte[] image;
+    @NotEmpty
+    @Size(min = 2, max = 50)
+    private String color;
+    @NotEmpty
+    @Size(min = 2, max = 50)
+    private String material;
+    @NotNull
+    @Digits(integer =5, fraction =2)
+    private Long weight;
+    private Gender gender;
+    private List<Gender> listOfGenders;
     private boolean dataProductFromDatabase;
     private ProductCategory productCategory;
     private List<ProductCategory> productCategoryList;
@@ -99,5 +110,45 @@ public class ProductForm {
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public Long getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Long weight) {
+        this.weight = weight;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public List<Gender> getListOfGenders() {
+        return listOfGenders;
+    }
+
+    public void setListOfGenders(List<Gender> listOfGenders) {
+        this.listOfGenders = listOfGenders;
     }
 }

@@ -83,17 +83,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void dataBaseProductInitialList() {
-        insertData("Climate Jacket","Warm for winter days", BigDecimal.valueOf(179.99),createProductFeatures("black","75% cotton,25% polyester",Gender.MALE,900),createProductCategory("Jackets"),"static/images/burst.shopify.com/jacket1.jpg");
-        insertData("Thermo T-shirt","Thermoactive t-shirt perfect for the gym", BigDecimal.valueOf(34.99),createProductFeatures("blue","100% cotton",Gender.MALE,80),createProductCategory("T-shirts"),"static/images/burst.shopify.com/tshirt1.jpg");
-        insertData("Sky shoes","Blue navy sport shoes", BigDecimal.valueOf(79.99),createProductFeatures("blue","textile",Gender.MALE,550),createProductCategory("Shoes"),"static/images/burst.shopify.com/shoe1.jpg");
-        insertData("Galaxy socks","Colourful design socks for creative person", BigDecimal.valueOf(9.99),createProductFeatures("colorful","80% cotton, 15% polyester, 5% spandex",Gender.UNISEX,60),createProductCategory("Socks"),"static/images/burst.shopify.com/sock1.jpg");
-        insertData("Red purse","Modern city red purse for active woman", BigDecimal.valueOf(44.99),createProductFeatures("red","leather",Gender.FEMALE,630),createProductCategory("Purses"),"static/images/burst.shopify.com/purse1.jpg");
-        insertData("Gold Tiny Necklace","Gold adjustable necklace", BigDecimal.valueOf(239.99),createProductFeatures("gold","gold",Gender.FEMALE,41),createProductCategory("Necklaces"),"static/images/burst.shopify.com/necklace1.jpg");
-        insertData("Classic marble earrings","Marble earrings, handmade item, style: Boho", BigDecimal.valueOf(124.99),createProductFeatures("white","marble",Gender.FEMALE,18),createProductCategory("Earrings"),"static/images/burst.shopify.com/earrings1.jpg");
-        insertData("Active watch","Black watch with quartz mechanism", BigDecimal.valueOf(49.99),createProductFeatures("black","leather",Gender.UNISEX,35),createProductCategory("Watches"),"static/images/burst.shopify.com/watch1.jpg");
+        insertData("Climate Jacket","Warm for winter days", BigDecimal.valueOf(179.99),createProductFeatures("black","75% cotton,25% polyester",Gender.MALE,Long.valueOf(900)),createProductCategory("Jackets"),"static/images/burst.shopify.com/jacket1.jpg");
+        insertData("Thermo T-shirt","Thermoactive t-shirt perfect for the gym", BigDecimal.valueOf(34.99),createProductFeatures("blue","100% cotton",Gender.MALE,Long.valueOf(80)),createProductCategory("T-shirts"),"static/images/burst.shopify.com/tshirt1.jpg");
+        insertData("Sky shoes","Blue navy sport shoes", BigDecimal.valueOf(79.99),createProductFeatures("blue","textile",Gender.MALE,Long.valueOf(550)),createProductCategory("Shoes"),"static/images/burst.shopify.com/shoe1.jpg");
+        insertData("Galaxy socks","Colourful design socks for creative person", BigDecimal.valueOf(9.99),createProductFeatures("colorful","80% cotton, 15% polyester, 5% spandex",Gender.UNISEX,Long.valueOf(60)),createProductCategory("Socks"),"static/images/burst.shopify.com/sock1.jpg");
+        insertData("Red purse","Modern city red purse for active woman", BigDecimal.valueOf(44.99),createProductFeatures("red","leather",Gender.FEMALE,Long.valueOf(630)),createProductCategory("Purses"),"static/images/burst.shopify.com/purse1.jpg");
+        insertData("Gold Tiny Necklace","Gold adjustable necklace", BigDecimal.valueOf(239.99),createProductFeatures("gold","gold",Gender.FEMALE,Long.valueOf(41)),createProductCategory("Necklaces"),"static/images/burst.shopify.com/necklace1.jpg");
+        insertData("Classic marble earrings","Marble earrings, handmade item, style: Boho", BigDecimal.valueOf(124.99),createProductFeatures("white","marble",Gender.FEMALE,Long.valueOf(18)),createProductCategory("Earrings"),"static/images/burst.shopify.com/earrings1.jpg");
+        insertData("Active watch","Black watch with quartz mechanism", BigDecimal.valueOf(49.99),createProductFeatures("black","leather",Gender.UNISEX,Long.valueOf(35)),createProductCategory("Watches"),"static/images/burst.shopify.com/watch1.jpg");
     }
 
-    ProductFeatures createProductFeatures(String color, String material, Gender gender,int weight){
+    ProductFeatures createProductFeatures(String color, String material, Gender gender,Long weight){
         ProductFeatures productFeatures=new ProductFeatures();
         productFeatures.setColor(color);
         productFeatures.setMaterial(material);
