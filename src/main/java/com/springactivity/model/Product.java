@@ -56,6 +56,17 @@ public class Product {
         this.image = image;
     }
 
+    public Product(String name, String description, BigDecimal price,ProductFeatures productFeatures, ProductCategory productCategory,Byte[] image) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.fotoImageUrl = fotoImageUrl;
+        this.image = image;
+        this.file = file;
+        this.productFeatures = productFeatures;
+        this.productCategory = productCategory;
+    }
+
     public Long getProductId() {
         return productId;
     }
