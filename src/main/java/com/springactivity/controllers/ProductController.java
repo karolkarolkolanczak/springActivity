@@ -1,6 +1,8 @@
 package com.springactivity.controllers;
 
 import com.springactivity.model.*;
+import com.springactivity.repositories.ProductCategoryRepository;
+import com.springactivity.services.ProductCategoryService;
 import com.springactivity.services.ProductService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by a on 18/01/2018.
@@ -21,10 +24,13 @@ import java.io.InputStream;
 public class ProductController {
 
     private ProductService productService;
+    private ProductCategoryService productCategoryService;
+    private List<ProductCategory> productCategoryList;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService,ProductCategoryService productCategoryService) {
         this.productService = productService;
+        this.productCategoryService=productCategoryService;
         productService.dataBaseProductInitialList();
     }
 
@@ -43,6 +49,7 @@ public class ProductController {
     @RequestMapping("/productForm")
     String addNewProduct(Model model){
         ProductForm productForm =new ProductForm();
+        productForm.setProductCategoryList(productService.getInitialProductCategoryList());
         model.addAttribute("productForm",productForm );
         return "productForm";
     }
@@ -71,6 +78,7 @@ public class ProductController {
             else return "productForm";
         }
         Product product=new Product();
+
         if(productForm.getProductId()!=null){
             product.setProductId(productForm.getProductId());
         }
@@ -79,17 +87,16 @@ public class ProductController {
         product.setPrice(productForm.getPrice());
 
         ProductFeatures productFeatures=new ProductFeatures();
-productFeatures.setColor("green");
-productFeatures.setGender(Gender.FEMALE);
-productFeatures.setMaterial("polipropylen");
-productFeatures.setWeight(223);
-product.setProductFeatures(productFeatures);
+        productFeatures.setColor("green");
+        productFeatures.setGender(Gender.FEMALE);
+        productFeatures.setMaterial("polipropylen");
+        productFeatures.setWeight(223);
+        product.setProductFeatures(productFeatures);
 
         ProductCategory productCategory=new ProductCategory();
-        productCategory.setCategoryName("Kurtki");
+        productCategory=productCategoryService.getProductCategoryById(productForm.getProductCategory().getProductCategoryId());
+
         product.setProductCategory(productCategory);
-
-
 
         if(productForm.getFile()!=null && productForm.getImage() != null){
             // converting data type 'MultipartFile' from Product Form to readable by database data type 'Byte[]'

@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -131,4 +132,14 @@ public class ProductServiceImpl implements ProductService {
         Arrays.setAll(byteObjects, n -> primitiveBytes[n]);
         return byteObjects;
     }
+
+    @Override
+    public List<ProductCategory> getInitialProductCategoryList() {
+        List<ProductCategory> productCategoryList=new ArrayList<>();
+        for(Product value:getListOfAllProducts()){
+            productCategoryList.add(value.getProductCategory());
+        }
+        return productCategoryList;
+    }
+
 }

@@ -7,6 +7,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by a on 26/01/2018.
@@ -25,6 +26,8 @@ public class ProductForm {
     private MultipartFile file;
     private Byte[] image;
     private boolean dataProductFromDatabase;
+    private ProductCategory productCategory;
+    private List<ProductCategory> productCategoryList;
 
     public Long getProductId() {
         return productId;
@@ -80,5 +83,21 @@ public class ProductForm {
 
     public void setDataProductFromDatabase(boolean dataProductFromDatabase) {
         this.dataProductFromDatabase = dataProductFromDatabase;
+    }
+
+    public List<ProductCategory> getProductCategoryList() {
+        return productCategoryList;
+    }
+
+    public void setProductCategoryList(List<ProductCategory> productCategoryList) {
+        this.productCategoryList = productCategoryList;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 }
