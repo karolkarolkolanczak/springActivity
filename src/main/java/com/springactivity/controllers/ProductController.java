@@ -74,13 +74,18 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
-    String addNewProduct(@Valid @ModelAttribute ProductForm productForm, BindingResult bindingResult){
+    String addNewProduct(@Valid @ModelAttribute("productForm") ProductForm productForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             if(productForm.isDataProductFromDatabase()){
                 return "productEdit";
             }
-            else return "productForm";
+            else{
+                productForm.setProductCategoryList(productService.getInitialProductCategoryList());
+                productForm.setListOfGenders(genderService.getListOfGenders());
+                return "productForm";
+            }
         }
+
         Product product=new Product();
 
         if(productForm.getProductId()!=null){

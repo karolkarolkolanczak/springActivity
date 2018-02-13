@@ -69,12 +69,13 @@
                 </span>
             </div>
         </div>
-        <div class="form-group" th:class="${#fields.hasErrors('productCategory')}? 'form-group has-error' : 'form-group'">
+        <div class="form-group">
             <label class="col-sm-2 control-label" th:text="#{product.category}+': '">Product Category:</label>
             <div class="dropdown col-sm-5">
                 <select class="form-control" id="productCategory" th:field="*{productCategory.productCategoryId}">
                     <option th:each="value : ${productForm.productCategoryList}"
-                            th:value="${value.productCategoryId}"
+                            th:value="${value.productCategoryId}" th:default="${value.categoryName}"
+                            th:selected="${value.productCategoryId}"
                             th:text="${value.categoryName}">Product Category Name</option>
                 </select>
             </div>
@@ -112,7 +113,7 @@
                 </span>
             </div>
         </div>
-        <div class="form-group" th:class="${#fields.hasErrors('gender')}? 'form-group has-error' : 'form-group'">
+        <div class="form-group">
             <label class="col-sm-2 control-label" th:text="#{product.features.gender}+': '">Gender:</label>
             <div class="dropdown col-sm-5">
                 <select class="form-control" id="gender" th:field="*{gender}">
