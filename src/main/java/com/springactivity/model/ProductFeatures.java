@@ -1,6 +1,7 @@
 package com.springactivity.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by a on 07/02/2018.
@@ -13,7 +14,7 @@ public class ProductFeatures {
     private Long productFeaturesId;
     private String color;
     private String material;
-    private Long weight;
+    private BigDecimal weight;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     // Attribute mappedBy indicates that the entity in this side is the inverse of the relationship,
@@ -45,11 +46,11 @@ public class ProductFeatures {
         this.material = material;
     }
 
-    public Long getWeight() {
+    public BigDecimal getWeight() {
         return weight;
     }
 
-    public void setWeight(Long weight) {
+    public void setWeight(BigDecimal weight) {
         this.weight = weight;
     }
 

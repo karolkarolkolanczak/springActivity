@@ -33,7 +33,7 @@ public class ProductForm {
     private String material;
     @NotNull
     @Digits(integer =5, fraction =2)
-    private Long weight;
+    private BigDecimal weight;
     private Gender gender;
     private List<Gender> listOfGenders;
     private boolean dataProductFromDatabase;
@@ -128,11 +128,11 @@ public class ProductForm {
         this.material = material;
     }
 
-    public Long getWeight() {
+    public BigDecimal getWeight() {
         return weight;
     }
 
-    public void setWeight(Long weight) {
+    public void setWeight(BigDecimal weight) {
         this.weight = weight;
     }
 
