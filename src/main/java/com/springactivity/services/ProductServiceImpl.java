@@ -142,4 +142,11 @@ public class ProductServiceImpl implements ProductService {
         return productCategoryList;
     }
 
+    @Override
+    public List<Product> getProductListByCategoryId(Long productCategoryId) {
+        List<Product> productListByCategoryId=new ArrayList<>();
+        productListByCategoryId=productRepository.productListByCategoryId(productCategoryId);
+        return productListByCategoryId;
+    }
+
 }

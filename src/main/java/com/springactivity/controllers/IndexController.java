@@ -21,6 +21,7 @@ public class IndexController {
     public String index(Model model){
         System.out.println("OKKKK");
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
+        model.addAttribute("listOfAllProductCategories",productService.getInitialProductCategoryList());
         return "index";
     }
 }

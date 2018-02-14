@@ -27,4 +27,6 @@ public interface ProductService {
     void dataBaseProductInitialList();
 
     List<ProductCategory> getInitialProductCategoryList();
+
+    List<Product> getProductListByCategoryId(Long productCategoryId);
 }

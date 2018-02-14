@@ -36,10 +36,11 @@
         </ol>
     </div>
     <!--<br />-->
-    <h4 style="font-weight: bold" th:text="#{product.category}"></h4>
+
+    <h4 style="font-weight: bold" th:text="${productCategory.categoryName}"></h4>
     <ul class="list-group">
-        <div  th:each="value,it : ${listOfAllProductCategories}">
-            <div th:replace="fragments/layoutDesign :: categoryDiv"></div>
+        <div  th:each="value,it : ${ProductListByCategoryId}">
+            <div th:replace="fragments/layoutDesign :: productDiv"></div>
         </div>
     </ul>
 
