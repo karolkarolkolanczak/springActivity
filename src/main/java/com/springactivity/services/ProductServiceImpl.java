@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void dataBaseProductInitialList() {
-        insertData("Climate Jacket","Warm for winter days", BigDecimal.valueOf(179.99),createProductFeatures("black","75% cotton,25% polyester",Gender.MALE,BigDecimal.valueOf(900)),createProductCategory("Jackets"),"static/images/burst.shopify.com/jacket1.jpg");
+        insertData("Climate Jacket","Warm for winter days", BigDecimal.valueOf(179.99),createProductFeatures("black","75% cotton, 25% polyester",Gender.MALE,BigDecimal.valueOf(900)),createProductCategory("Jackets"),"static/images/burst.shopify.com/jacket1.jpg");
         insertData("Thermo T-shirt","Thermoactive t-shirt perfect for the gym", BigDecimal.valueOf(34.99),createProductFeatures("blue","100% cotton",Gender.MALE,BigDecimal.valueOf(80)),createProductCategory("T-shirts"),"static/images/burst.shopify.com/tshirt1.jpg");
         insertData("Sky shoes","Blue navy sport shoes", BigDecimal.valueOf(79.99),createProductFeatures("blue","textile",Gender.MALE,BigDecimal.valueOf(550)),createProductCategory("Shoes"),"static/images/burst.shopify.com/shoe1.jpg");
         insertData("Galaxy socks","Colourful design socks for creative person", BigDecimal.valueOf(9.99),createProductFeatures("colorful","80% cotton, 15% polyester, 5% spandex",Gender.UNISEX,BigDecimal.valueOf(60)),createProductCategory("Socks"),"static/images/burst.shopify.com/sock1.jpg");

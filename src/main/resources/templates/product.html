@@ -41,20 +41,45 @@
 
     <h2 th:text="#{product.details}"></h2>
     <br />
-    <div>
-        <table class="table table-striped">
+    <div class="col-md-6" style='padding-right: 0px; padding-left: 0px;'>
+        <table class="table table-striped ">
             <tr>
                 <th sec:authorize="isAuthenticated()"><p th:text="#{product.productId}"></p></th>
                 <th><p th:text="#{product.name}"></p></th>
                 <th><p th:text="#{product.description}"></p></th>
                 <th><p th:text="#{product.price}"></p></th>
+            </tr>
+            <tr th:each="value:${productById}">
+                    <td sec:authorize="isAuthenticated()" th:text="${value.productId}"></td>
+                    <td th:text="${value.name}"></td>
+                    <td th:text="${value.description}"></td>
+                    <td th:text="${value.price}"></td>
+            </tr>
+        </table>
+        <h1>&nbsp;</h1><h1>&nbsp;</h1>
+        <table class="table table-striped ">
+            <tr>
+                <th><p th:text="#{product.features.color}"></p></th>
+                <th><p th:text="#{product.features.material}"></p></th>
+                <th><p th:text="#{product.features.weight}"></p></th>
+                <th><p th:text="#{product.features.gender}"></p></th>
+            </tr>
+            <tr th:each="value:${productById}">
+                <td th:text="${value.productFeatures.color}"></td>
+                <td th:text="${value.productFeatures.material}"></td>
+                <td th:text="${value.productFeatures.weight}+' g'"></td>
+                <td th:text="${value.productFeatures.gender}"></td>
+            </tr>
+
+            <!--<div style="margin:0; padding:0; height:50px;"></div>-->
+        </table>
+    </div>
+    <div class="col-md-6" style='padding-right: 0px; padding-left: 0px;'>
+        <table class="table table-striped">
+            <tr>
                 <th style="text-align:center"><p th:text="#{product.image}"></p></th>
             </tr>
             <tr th:each="value:${productById}">
-                <td sec:authorize="isAuthenticated()" th:text="${value.productId}"></td>
-                <td th:text="${value.name}"></td>
-                <td th:text="${value.description}"></td>
-                <td th:text="${value.price}"></td>
                 <td><img src="../static/images/burst.shopify.com/shoe1.jpg" width="500" height="500"
                          th:src="@{'/product/' + ${value.productId} + '/image'}" class="center-block"/>
                     <h5 style="text-align:center" th:text="#{free.pictures}">Free pictures from: burst.shopify.com</h5>
@@ -62,6 +87,7 @@
             </tr>
         </table>
     </div>
+
    <h3><a href="#" th:href="@{/products}">Back</a></h3>
 </div>
 
