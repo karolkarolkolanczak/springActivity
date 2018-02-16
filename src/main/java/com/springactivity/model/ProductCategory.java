@@ -13,7 +13,7 @@ public class ProductCategory {
     private Long productCategoryId;
     private String categoryName;
     @OneToMany(mappedBy = "productCategory",
-        cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Product> productList;
 
     public Long getProductCategoryId() {

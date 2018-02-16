@@ -2,9 +2,12 @@ package com.springactivity.services;
 
 import com.springactivity.model.ProductCategory;
 import com.springactivity.repositories.ProductCategoryRepository;
-import com.springactivity.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by a on 12/02/2018.
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
    private ProductCategoryRepository productCategoryRepository;
+   private List<ProductCategory>listOfAllProductCategory;
 
    @Autowired
     public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
@@ -24,5 +28,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         ProductCategory productCategory=new ProductCategory();
         productCategory=productCategoryRepository.findOne(productCategoryId);
         return productCategory;
+    }
+
+    @Override
+    public List<ProductCategory> getListOfAllProductCategories() {
+        Iterable<ProductCategory> iterator = productCategoryRepository.findAll();
+        List<ProductCategory> listOfAllProductCategory = StreamSupport
+                .stream(iterator.spliterator(), false)
+                .collect(Collectors.toList());
+        return listOfAllProductCategory;
     }
 }

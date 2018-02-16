@@ -24,9 +24,7 @@ public interface ProductService {
 
     Byte[] convertFromMultipartFileToByteFormatFile(MultipartFile file);
 
-    void dataBaseProductInitialList();
-
-    List<ProductCategory> getInitialProductCategoryList();
+    void databaseInitialLoad();
 
     List<Product> getProductListByCategoryId(Long productCategoryId);
 }

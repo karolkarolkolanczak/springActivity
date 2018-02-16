@@ -1,7 +1,6 @@
 package com.springactivity.controllers;
 
 import com.springactivity.model.*;
-import com.springactivity.repositories.ProductCategoryRepository;
 import com.springactivity.services.GenderService;
 import com.springactivity.services.ProductCategoryService;
 import com.springactivity.services.ProductService;
@@ -34,7 +33,6 @@ public class ProductController {
         this.productService = productService;
         this.productCategoryService=productCategoryService;
         this.genderService=genderService;
-        productService.dataBaseProductInitialList();
     }
 
     @RequestMapping("/products")
@@ -52,7 +50,7 @@ public class ProductController {
     @RequestMapping("/productForm")
     String addNewProduct(Model model){
         ProductForm productForm =new ProductForm();
-        productForm.setProductCategoryList(productService.getInitialProductCategoryList());
+        productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
         productForm.setListOfGenders(genderService.getListOfGenders());
         model.addAttribute("productForm",productForm );
         return "productForm";
@@ -80,7 +78,7 @@ public class ProductController {
                 return "productEdit";
             }
             else{
-                productForm.setProductCategoryList(productService.getInitialProductCategoryList());
+                productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
                 productForm.setListOfGenders(genderService.getListOfGenders());
                 return "productForm";
             }
