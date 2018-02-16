@@ -2,18 +2,17 @@
 <!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <title>Product Form</title>
+    <title>Product Edit</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
-
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-
-    <link href="../../static/css/spring-core.css"
-          th:href="@{../spring-core.css}" rel="stylesheet" media="screen"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <link href="../../spring-core.css"
+          th:href="@{../static/css/spring-core.css}" rel="stylesheet" media="screen"/>
     <script type="text/javascript">
         $(document).ready(function() {
             $("#locales").change(function () {
@@ -72,6 +71,60 @@
                 </span>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" th:text="#{product.category}+': '">Product Category:</label>
+                <div class="dropdown col-sm-5">
+                    <select class="form-control" id="productCategory" th:field="*{productCategory.productCategoryId}">
+                        <option th:each="value : ${productForm.productCategoryList}"
+                                th:value="${value.productCategoryId}" th:default="${value.categoryName}"
+                                th:selected="${value.productCategoryId}"
+                                th:text="${value.categoryName}">Product Category Name</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" th:class="${#fields.hasErrors('color')}? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-3 control-label" th:text="#{product.features.color}+': '">Product color:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{color}" th:errorclass="has-error"/>
+                    <span class="help-block" th:if="${#fields.hasErrors('color')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('color')}" th:text="${err}" />
+                       </ul>
+                </span>
+                </div>
+            </div>
+            <div class="form-group" th:class="${#fields.hasErrors('material')}? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-3 control-label" th:text="#{product.features.material}+': '">Product material:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{material}" th:errorclass="has-error"/>
+                    <span class="help-block" th:if="${#fields.hasErrors('material')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('material')}" th:text="${err}" />
+                       </ul>
+                </span>
+                </div>
+            </div>
+            <div class="form-group" th:class="${#fields.hasErrors('weight')}? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-3 control-label" th:text="#{product.features.weight}+': '">Product weight:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{weight}" th:errorclass="has-error"/>
+                    <span class="help-block" th:if="${#fields.hasErrors('weight')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('weight')}" th:text="${err}" />
+                       </ul>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" th:text="#{product.features.gender}+': '">Gender:</label>
+                <div class="dropdown col-sm-5">
+                    <select class="form-control" id="gender" th:field="*{gender}">
+                        <option th:each="value : ${productForm.listOfGenders}"
+                                th:value="${value}"
+                                th:text="${value}">Gender</option>
+                    </select>
+                </div>
+            </div>
             <input type="hidden" th:field="*{image}"/>
             <input type="hidden" th:field="*{dataProductFromDatabase}"/>
             <div class="form-group">
@@ -79,9 +132,12 @@
                 <div class="col-sm-5">
                 <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>
                 </div>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>
+            </div> <br />
+            <div class="form-group">
+                <div class="row col-sm-5 control-label" style="margin-bottom: 100px">
+                    <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>
+                    <button type="submit" class="btn btn-primary" th:text="#{save}">Save</button>
+                </div>
             </div>
         </div>
         <div class="form-group col-md-offset-1 col-md-3 ">

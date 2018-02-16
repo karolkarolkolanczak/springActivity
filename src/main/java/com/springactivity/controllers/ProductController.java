@@ -66,20 +66,28 @@ public class ProductController {
         productForm.setDescription(product.getDescription());
         productForm.setPrice(product.getPrice());
         productForm.setImage(product.getImage());
+        productForm.setColor(product.getProductFeatures().getColor());
+        productForm.setMaterial(product.getProductFeatures().getMaterial());
+        productForm.setWeight(product.getProductFeatures().getWeight());
+        productForm.setGender(product.getProductFeatures().getGender());
+        productForm.setProductCategory(product.getProductCategory());
+        productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
+        productForm.setListOfGenders(genderService.getListOfGenders());
         productForm.setDataProductFromDatabase(true);
         model.addAttribute("productForm", productForm);
         return "productEdit";
     }
 
     @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
-    String addNewProduct(@Valid @ModelAttribute("productForm") ProductForm productForm, BindingResult bindingResult){
+    String addOrUpdateProduct(@Valid @ModelAttribute("productForm") ProductForm productForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
+            productForm.setListOfGenders(genderService.getListOfGenders());
+
             if(productForm.isDataProductFromDatabase()){
                 return "productEdit";
             }
             else{
-                productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
-                productForm.setListOfGenders(genderService.getListOfGenders());
                 return "productForm";
             }
         }
