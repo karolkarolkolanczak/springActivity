@@ -101,13 +101,13 @@
     <li class="list-group-item col-md-4" th:fragment="categoryDiv" >
         <div>
             <a th:href="@{${'/productCategory/'+value.productCategoryId}}">
-                <!--<div class="col-md-12" style="color: black">-->
+                <div class="col-md-12" style="color: black">
                     <div th:text="${value.categoryName}">Category name</div><br />
-                    <!--<div>-->
-                        <!--<img src="../static/images/burst.shopify.com/shoe1.jpg" width="200" height="200"-->
-                             <!--th:src="@{'/product/' + ${value.productId} + '/image'}" class="center-block"/>-->
-                    <!--</div>-->
-                <!--</div>-->
+                    <div  th:each="product,iterStat: ${value.productList}" th:if="${iterStat.index} &lt; 1">
+                        <img src="../static/images/burst.shopify.com/shoe1.jpg" width="200" height="200"
+                             th:src="@{'/product/' + ${product.productId} + '/image'}" class="center-block"/>
+                    </div>
+                </div>
             </a>
         </div>
     </li>
