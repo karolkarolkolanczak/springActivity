@@ -22,7 +22,6 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model){
-        System.out.println("OKKKK");
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
         model.addAttribute("listOfAllProductCategories",productCategoryService.getListOfAllProductCategories());
         return "index";
