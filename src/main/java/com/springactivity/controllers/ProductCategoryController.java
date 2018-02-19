@@ -28,4 +28,11 @@ public class ProductCategoryController {
         model.addAttribute("ProductListByCategoryId",productService.getProductListByCategoryId(id));
         return "productCategory";
     }
+
+    @RequestMapping("/productCategories")
+    public String productCategories(Model model){
+        model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
+        model.addAttribute("listOfAllProductCategories",productCategoryService.getListOfAllProductCategories());
+        return "productCategories";
+    }
 }

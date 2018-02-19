@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Admin Area</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../spring-core.css"
+          th:href="@{../static/css/spring-core.css}" rel="stylesheet" media="screen"/>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/layoutDesign ::layoutHeader">Layout header</div>
+
+    <div th:insert="fragments/layoutDesign  :: breadcrumb">
+        <ol class="breadcrumb container" style="width: 100%">
+            <li><a href="#" th:href="@{${'/adminArea'}}" th:text="#{admin.area}" style="color:black">Admin Home</a></li>
+        </ol>
+    </div><h4>&nbsp;</h4>
+
+    <div th:each="value:${listOfAllPictures}" >
+        <div class="list-group-item col-md-4" th:if="${value.nameOfPicture} == 'categoriesPicture'">
+            <div>
+                <a th:href="@{${'/'}}">
+                    <div class="col-md-12" style="color: black">
+                        <div th:text="#{product.categories}">Product Categories</div><br />
+                        <div>
+                            <img src="../static/images/burst.shopify.com/categories3.jpg" width="200" height="200"
+                                 th:src="@{'/picture/' + ${value.pictureId} + '/image'}" class="center-block"/>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="list-group-item col-md-4" th:if="${value.nameOfPicture} == 'allProductsPicture'">
+            <div>
+                <a th:href="@{${'/products'}}">
+                    <div class="col-md-12" style="color: black">
+                        <div th:text="#{products.all}">All Products</div><br />
+                        <div>
+                            <img src="../static/images/burst.shopify.com/allProducts3.jpg" width="200" height="200"
+                                 th:src="@{'/picture/' + ${value.pictureId} + '/image'}" class="center-block"/>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/layoutDesign ::layoutFooter">
+    Layout footer
+</div>
+
+</body>
+</html>

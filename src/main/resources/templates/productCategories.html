@@ -34,8 +34,7 @@
         <div th:insert="fragments/layoutDesign  :: breadcrumb">
             <ol class="breadcrumb container" style="width: 100%">
                 <li><a href="#" th:href="@{${'/adminArea'}}" th:text="#{admin.area}" style="color:black">Admin Home</a></li>
-                <li><a href="#" th:href="@{${'/productCategories'}}" th:text="#{product.categories}" style="color:black"></a></li>
-                <li th:text="${productCategory.categoryName}" style="color:black"></li>
+                <li th:text="#{product.categories}"></li>
             </ol>
         </div><h4>&nbsp;</h4>
     </div>
@@ -43,17 +42,15 @@
         <div th:insert="fragments/layoutDesign  :: breadcrumb">
             <ol class="breadcrumb container" style="width: 100%">
                 <li><a href="#" th:href="@{${'/'}}" th:text="#{home}" style="color:black">Home</a></li>
-                <li><a href="#" th:href="@{${'/productCategories'}}" th:text="#{product.categories}" style="color:black"></a></li>
-                <li th:text="${productCategory.categoryName}" style="color:black"></li>
+                <li th:text="#{product.categories}"></li>
             </ol>
         </div><h4>&nbsp;</h4>
     </div>
 
-
-    <h4 style="font-weight: bold" th:text="${productCategory.categoryName}"></h4>
+    <h4 style="font-weight: bold" th:text="#{product.categories}"></h4>
     <ul class="list-group">
-        <div  th:each="value,it : ${ProductListByCategoryId}">
-            <div th:replace="fragments/layoutDesign :: productDiv"></div>
+        <div  th:each="value,iterStat : ${listOfAllProductCategories}">
+            <div th:replace="fragments/layoutDesign :: categoryDiv"></div>
         </div>
     </ul>
 

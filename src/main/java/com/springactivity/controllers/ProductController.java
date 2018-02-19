@@ -74,6 +74,7 @@ public class ProductController {
         productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
         productForm.setListOfGenders(genderService.getListOfGenders());
         productForm.setDataProductFromDatabase(true);
+        model.addAttribute("productById", productService.getProductById(id));
         model.addAttribute("productForm", productForm);
         return "productEdit";
     }

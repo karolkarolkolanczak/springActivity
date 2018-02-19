@@ -29,7 +29,7 @@
 <div class="container">
 
     <div th:fragment="layoutHeader">
-        <nav class="navbar navbar-default ">
+        <nav class="navbar navbar-default" style="margin-bottom: 0px;">
 
             <div style="position:absolute; top:5px; right:250px" ><span th:text="#{select.language}"></span>:
                 <select id="locales">
@@ -42,7 +42,7 @@
 
             <div sec:authorize="isAuthenticated()">
                 <div style="margin: 20px">
-                    <h2 th:text="#{admin.panel}"></h2>
+                    <a href="#" th:href="@{${'/adminArea'}}" style="color:black"><h2 th:text="#{admin.panel}"> Administartor Panel</h2></a>
                 </div>
                 <div style="position:absolute; top:5px; right:10px">
                     <form th:action="@{/logout}" method="post">
@@ -62,8 +62,8 @@
 
             <div sec:authorize="!isAuthenticated()">
                 <div style="margin: 20px">
-                    <a href="/" style="color:black"><h2 th:text="#{shop.name}"></h2></a>
-                    <a href="/" style="color:black"><h5 th:text="#{outdoor.shop}"></h5></a>
+                    <a href="#" th:href="@{${'/'}}" style="color:black"><h2 th:text="#{shop.name}"></h2></a>
+                    <a href="#" th:href="@{${'/'}}" style="color:black"><h5 th:text="#{outdoor.shop}"></h5></a>
                 </div>
                 <div style="position:absolute; top:5px; right:10px">
                     <form th:action="@{/loginForm}" method="get">
@@ -123,7 +123,7 @@
     </div >
 
     <div th:fragment="breadcrumb" >
-        <ol class="breadcrumb container" th:replace="${breadcrumb}" >
+        <ol class="breadcrumb container" th:replace="${breadcrumb}">
             <li ><a href="#">Home</a></li>
         </ol>
     </div>

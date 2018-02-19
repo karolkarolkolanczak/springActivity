@@ -17,7 +17,7 @@ public class ExceptionController {
         return modelAttribute(error,model);
     }
 
-    public String  modelAttribute(Exception error,Model model){
+    public String  modelAttribute(Exception error, Model model){
         model.addAttribute("message", error.getMessage());
         model.addAttribute("stackTrace", error.getStackTrace());
         model.addAttribute("exception", error);

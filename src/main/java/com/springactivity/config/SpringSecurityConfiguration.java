@@ -39,7 +39,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/loginForm")
-                .defaultSuccessUrl("/products")
+                .defaultSuccessUrl("/adminArea")
                 .failureUrl("/login-error")
                 .permitAll()
                 .and()
@@ -47,7 +47,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .deleteCookies("remove")
                 .invalidateHttpSession(true)
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/productCategories")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 }

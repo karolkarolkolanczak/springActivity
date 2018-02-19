@@ -30,8 +30,15 @@
 
     <div th:replace="fragments/layoutDesign ::layoutHeader" >Layout header</div>
 
-    <h2 th:text="#{admin.area}+': '+#{user.login.form}">Admin Area Login Form</h2>
-    <br />
+    <div th:insert="fragments/layoutDesign  :: breadcrumb">
+        <ol class="breadcrumb container" style="width: 100%">
+            <li><a href="#" th:href="@{${'/'}}" th:text="#{home}" style="color:black">Home</a></li>
+            <li th:text="#{user.login.form}" style="color:black">Login Form</li>
+        </ol>
+    </div><h4>&nbsp;</h4>
+
+    <h2 th:text="#{admin.area}+': '+#{user.login.form}">Admin Area Login Form</h2><br />
+
     <form class="form-horizontal" th:action="@{/loginForm}" method="post">
 
         <p th:if="${loginError}" class="alert alert-danger">Invalid username or password, try again.</p>

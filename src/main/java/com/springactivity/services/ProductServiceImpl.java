@@ -1,9 +1,7 @@
 package com.springactivity.services;
 
-import com.springactivity.model.Gender;
-import com.springactivity.model.Product;
-import com.springactivity.model.ProductCategory;
-import com.springactivity.model.ProductFeatures;
+import com.springactivity.model.*;
+import com.springactivity.repositories.PictureRepository;
 import com.springactivity.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,12 +26,14 @@ public class ProductServiceImpl implements ProductService {
 
     private List<Product> listOfAllProducts;
     private ProductRepository productRepository;
+    private PictureRepository pictureRepository;
     private ProductCategoryService productCategoryService;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository,ProductCategoryService productCategoryService) {
+    public ProductServiceImpl(ProductRepository productRepository,ProductCategoryService productCategoryService,PictureRepository pictureRepository) {
         this.productRepository = productRepository;
         this.productCategoryService=productCategoryService;
+        this.pictureRepository = pictureRepository;
     }
 
     @Override
@@ -103,6 +103,8 @@ public class ProductServiceImpl implements ProductService {
         insertData("Butterfly earrings","Butterfly earrings, handmade item", BigDecimal.valueOf(139.99),createProductFeatures("gold","gold",Gender.FEMALE,BigDecimal.valueOf(22)),createProductCategory("Earrings"),"static/images/burst.shopify.com/earrings2.jpg");
         insertData("Active watch","Black watch with quartz mechanism", BigDecimal.valueOf(49.99),createProductFeatures("black","leather",Gender.UNISEX,BigDecimal.valueOf(35)),createProductCategory("Watches"),"static/images/burst.shopify.com/watch1.jpg");
         insertData("Abstract watch","Blue watch with quartz mechanism", BigDecimal.valueOf(49.99),createProductFeatures("blue","leather",Gender.UNISEX,BigDecimal.valueOf(35)),createProductCategory("Watches"),"static/images/burst.shopify.com/watch2.jpg");
+        insertData("allProductsPicture","static/images/burst.shopify.com/allProducts1.jpg");
+        insertData("categoriesPicture", "static/images/burst.shopify.com/categories1.jpg");
     }
 
     ProductFeatures createProductFeatures(String color, String material, Gender gender,BigDecimal weight){
@@ -138,6 +140,13 @@ public class ProductServiceImpl implements ProductService {
         File file = new File(classLoader.getResource(pictureSource).getFile());
         Product product=new Product(productName,productDescription,price, productFeatures, productCategory,imageReader(file));
         saveOrUpdateProduct(product);
+    }
+
+    public void insertData( String nameOfPicture,String pictureSource){
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file= new File(classLoader.getResource(pictureSource).getFile());
+        Picture picture=new Picture(nameOfPicture,imageReader(file));
+        pictureRepository.save(picture);
     }
 
     public Byte[] imageReader(File file){

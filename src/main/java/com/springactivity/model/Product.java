@@ -33,8 +33,8 @@ public class Product {
 //    @JoinColumn indicates that this entity is the owner of the relationship
 //    (table has a column with a foreign key to the referenced table)
     private ProductFeatures productFeatures;
-@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-@JoinColumn(name = "product_Category_Id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "product_Category_Id")
     private ProductCategory productCategory;
 
     public Product() {
