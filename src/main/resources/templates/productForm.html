@@ -123,12 +123,23 @@
                 </select>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" th:class="${#fields.hasErrors('file')}? 'form-group has-error' : 'form-group'">
             <label class="col-sm-2 control-label" th:text="#{product.image}+': '">Image:</label>
             <div class="col-sm-5">
-                <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>
+                <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}" th:errorclass="has-error"/>
+                <span class="help-block" th:if="${#fields.hasErrors('file')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('file')}" th:text="${err}" />
+                       </ul>
+                </span>
             </div>
-        </div><br />
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label" th:text="#{product.image}+': '">Image:</label>-->
+            <!--<div class="col-sm-5">-->
+                <!--<input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>-->
+            <!--</div>-->
+        <!--</div><br />-->
         <div class="form-group">
             <div class="row col-sm-3 control-label" style="margin-bottom: 100px">
                 <button type="submit" class="btn btn-default" th:text="#{submit}">Submit</button>

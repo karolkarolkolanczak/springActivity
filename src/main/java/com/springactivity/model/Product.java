@@ -1,12 +1,8 @@
 package com.springactivity.model;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Created by a on 18/01/2018.

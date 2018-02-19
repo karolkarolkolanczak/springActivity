@@ -3,9 +3,11 @@ package com.springactivity.model;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Constraint;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.lang.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ProductForm {
     @NotNull
     @Digits(integer =5, fraction =2)
     private BigDecimal price;
+    @Image(message = "Image size should be less than 5MB ")
     private MultipartFile file;
     private Byte[] image;
     @NotEmpty

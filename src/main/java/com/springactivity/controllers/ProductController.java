@@ -84,7 +84,6 @@ public class ProductController {
         if(bindingResult.hasErrors()){
             productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
             productForm.setListOfGenders(genderService.getListOfGenders());
-
             if(productForm.isDataProductFromDatabase()){
                 return "productEdit";
             }
@@ -94,7 +93,6 @@ public class ProductController {
         }
 
         Product product=new Product();
-
         if(productForm.getProductId()!=null){
             product.setProductId(productForm.getProductId());
         }
