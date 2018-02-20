@@ -34,11 +34,11 @@
         <ol class="breadcrumb container" style="width: 100%">
             <li><a href="#" th:href="@{${'/products'}}" th:text="#{admin.area}" style="color:black">Home / Admin Panel</a></li>
             <li><a href="#" th:href="@{${'/productCategories'}}" th:text="#{product.categories}" style="color:black"></a></li>
-            <li><a href="#" th:href="@{${'/productCategory/'+productById.productCategory.productCategoryId}}" th:text="${productById.productCategory.categoryName}" style="color:black">Product Category</a></li>
-            <li th:text="${productById.name}">Product Name</li>
+            <li><a href="#" th:href="@{${'/productCategory/'+productForm.productCategory.productCategoryId}}" th:text="${productForm.productCategory.categoryName}" style="color:black">Product Category</a></li>
+            <li th:text="${productForm.name}">Product Name</li>
         </ol>
     </div><h4>&nbsp;</h4>
-    
+
     <h2 th:text="#{product.edit}">Edit product</h2>
     <br />
     <form class="form-horizontal" th:object="${productForm}" th:action="@{/productFormSubmit}" method="post" enctype="multipart/form-data">
@@ -136,12 +136,17 @@
             </div>
             <input type="hidden" th:field="*{image}"/>
             <input type="hidden" th:field="*{dataProductFromDatabase}"/>
-            <div class="form-group">
+            <div class="form-group" th:class="${#fields.hasErrors('file')}? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-3 control-label" th:text="#{product.image}+': '">Image:</label>
                 <div class="col-sm-5">
-                <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}"/>
+                    <input id="imagefile" name="imagefile" type="file" class="file" th:field="*{file}" th:errorclass="has-error"/>
+                    <span class="help-block" th:if="${#fields.hasErrors('file')}">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('file')}" th:text="${err}" />
+                       </ul>
+                </span>
                 </div>
-            </div> <br />
+            </div>
             <div class="form-group">
                 <div class="row col-sm-5 control-label" style="margin-bottom: 100px">
                     <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>

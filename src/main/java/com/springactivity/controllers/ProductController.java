@@ -82,6 +82,7 @@ public class ProductController {
     @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
     String addOrUpdateProduct(@Valid @ModelAttribute("productForm") ProductForm productForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            productForm.setProductCategory(productCategoryService.getProductCategoryById(productForm.getProductCategory().getProductCategoryId()));
             productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
             productForm.setListOfGenders(genderService.getListOfGenders());
             if(productForm.isDataProductFromDatabase()){
