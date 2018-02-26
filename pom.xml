@@ -85,6 +85,14 @@
 			<version>2.1.4</version>
 		</dependency>
 
+		<!--postgresql-->
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1206-jdbc42</version>
+		</dependency>
+
 		<!--oracle jdbc driver-->
 		<dependency>
 			<groupId>com.oracle</groupId>
