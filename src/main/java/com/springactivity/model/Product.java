@@ -20,7 +20,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-    @Lob
+    @Lob @Basic(fetch = FetchType.EAGER)
     private Byte[] image;
     @Transient
     private MultipartFile file;
