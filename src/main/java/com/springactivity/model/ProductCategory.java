@@ -9,8 +9,8 @@ import java.util.List;
 @Entity
 public class ProductCategory {
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productCategoryId;
     private String categoryName;
     @OneToMany(mappedBy = "productCategory",fetch=FetchType.LAZY,
