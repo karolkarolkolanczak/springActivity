@@ -10,10 +10,11 @@ import javax.persistence.*;
 @Entity
 public class Picture {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long pictureId;
     private String nameOfPicture;
-    @Lob
+    @Lob @Basic(fetch = FetchType.EAGER)
     private Byte[] image;
     @Transient
     private MultipartFile file;

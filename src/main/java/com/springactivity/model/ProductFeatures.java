@@ -10,7 +10,8 @@ import java.math.BigDecimal;
 public class ProductFeatures {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productFeaturesId;
     private String color;
     private String material;
