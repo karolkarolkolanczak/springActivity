@@ -3,12 +3,13 @@ package com.springactivity.model;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by a on 18/02/2018.
  */
 @Entity
-public class Picture {
+public class Picture implements Serializable {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

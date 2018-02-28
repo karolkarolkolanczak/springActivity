@@ -2,13 +2,14 @@ package com.springactivity.model;
 
 import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by a on 18/01/2018.
  */
 @Entity
-public class Product {
+public class Product implements Serializable {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
