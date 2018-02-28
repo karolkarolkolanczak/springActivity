@@ -10,14 +10,14 @@ import java.io.Serializable;
  * Created by a on 18/02/2018.
  */
 @Entity
-public class Picture implements Serializable {
+public class Picture {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long pictureId;
     private String nameOfPicture;
-    @Lob @Basic(fetch = FetchType.EAGER)
-@Type(type="org.hibernate.type.ImageType")
+//    @Lob @Basic(fetch = FetchType.EAGER)
+//@Type(type="org.hibernate.type.ImageType")
 private Byte[] image;
     @Transient
     private MultipartFile file;

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Created by a on 18/01/2018.
  */
 @Entity
-public class Product implements Serializable {
+public class Product {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,8 @@ public class Product implements Serializable {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-    @Lob @Basic(fetch = FetchType.EAGER)
-@Type(type="org.hibernate.type.ImageType")
+//    @Lob @Basic(fetch = FetchType.EAGER)
+//@Type(type="org.hibernate.type.ImageType")
     private Byte[] image;
     @Transient
     private MultipartFile file;
