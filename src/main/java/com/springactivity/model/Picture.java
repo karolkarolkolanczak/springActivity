@@ -1,5 +1,6 @@
 package com.springactivity.model;
 
+import org.hibernate.annotations.Type;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -15,8 +16,9 @@ public class Picture implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long pictureId;
     private String nameOfPicture;
-    @Lob @Basic(fetch = FetchType.EAGER)
-    private Byte[] image;
+//    @Lob @Basic(fetch = FetchType.EAGER)
+@Type(type="org.hibernate.type.BinaryType")
+private Byte[] image;
     @Transient
     private MultipartFile file;
 
