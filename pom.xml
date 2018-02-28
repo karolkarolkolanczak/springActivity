@@ -85,12 +85,24 @@
 			<version>2.1.4</version>
 		</dependency>
 
-		<!--postgresql-->
+		<!--Local postgresql-->
+		<!--<dependency>-->
+			<!--<groupId>org.postgresql</groupId>-->
+			<!--<artifactId>postgresql</artifactId>-->
+			<!--<version>9.4-1206-jdbc42</version>-->
+		<!--</dependency>-->
 
+		<!--HEROKU postgresql-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.4-1206-jdbc42</version>
+			<version>9.4.1208</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons-dbcp2.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!--oracle jdbc driver-->
