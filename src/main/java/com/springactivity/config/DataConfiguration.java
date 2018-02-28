@@ -14,10 +14,10 @@ import org.springframework.context.annotation.Profile;
 /**
  * Created by a on 28/02/2018.
  */
-@Configuration
+//@Configuration
 public class DataConfiguration {
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
+
+//    private String dbUrl;
 //    @Bean
 //    public BasicDataSource dataSource() throws URISyntaxException {
 //        URI dbUri = new URI(System.getenv("DATABASE_URL"));
