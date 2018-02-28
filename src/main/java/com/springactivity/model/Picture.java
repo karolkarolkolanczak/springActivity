@@ -16,9 +16,8 @@ public class Picture {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long pictureId;
     private String nameOfPicture;
-//    @Lob @Basic(fetch = FetchType.EAGER)
-//@Type(type="org.hibernate.type.ImageType")
-private Byte[] image;
+    @Lob
+    private Byte[] image;
     @Transient
     private MultipartFile file;
 

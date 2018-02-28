@@ -22,8 +22,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-//    @Lob @Basic(fetch = FetchType.EAGER)
-//@Type(type="org.hibernate.type.ImageType")
+    @Lob
     private Byte[] image;
     @Transient
     private MultipartFile file;
