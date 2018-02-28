@@ -22,7 +22,7 @@ public class Product implements Serializable {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-//    @Lob @Basic(fetch = FetchType.EAGER)
+    @Lob @Basic(fetch = FetchType.EAGER)
 @Type(type="org.hibernate.type.ImageType")
     private Byte[] image;
     @Transient

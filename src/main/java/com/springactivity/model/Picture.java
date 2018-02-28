@@ -16,7 +16,7 @@ public class Picture implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long pictureId;
     private String nameOfPicture;
-//    @Lob @Basic(fetch = FetchType.EAGER)
+    @Lob @Basic(fetch = FetchType.EAGER)
 @Type(type="org.hibernate.type.ImageType")
 private Byte[] image;
     @Transient
