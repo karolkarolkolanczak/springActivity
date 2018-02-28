@@ -17,7 +17,7 @@ public class Picture implements Serializable {
     Long pictureId;
     private String nameOfPicture;
 //    @Lob @Basic(fetch = FetchType.EAGER)
-@Type(type="org.hibernate.type.BinaryType")
+@Type(type="org.hibernate.type.ImageType")
 private Byte[] image;
     @Transient
     private MultipartFile file;

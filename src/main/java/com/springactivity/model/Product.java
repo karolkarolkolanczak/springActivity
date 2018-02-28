@@ -23,7 +23,7 @@ public class Product implements Serializable {
     private BigDecimal price;
     private String fotoImageUrl;
 //    @Lob @Basic(fetch = FetchType.EAGER)
-@Type(type="org.hibernate.type.BinaryType")
+@Type(type="org.hibernate.type.ImageType")
     private Byte[] image;
     @Transient
     private MultipartFile file;
