@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -36,18 +37,21 @@ public class ProductController {
     }
 
     @RequestMapping("/products")
+    @Transactional
     String showListOfAllProducts(Model model){
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
         return "products";
     }
 
     @RequestMapping("/product/{id}")
+    @Transactional
     String getProductById(@PathVariable Long id, Model model){
         model.addAttribute("productById", productService.getProductById(id));
         return "product";
     }
 
     @RequestMapping("/productForm")
+    @Transactional
     String addNewProduct(Model model){
         ProductForm productForm =new ProductForm();
         productForm.setProductCategoryList(productCategoryService.getListOfAllProductCategories());
@@ -57,6 +61,7 @@ public class ProductController {
     }
 
     @RequestMapping("/editProduct/{id}")
+    @Transactional
     String editProduct(@PathVariable Long id, Model model){
         Product product=new Product();
         product=productService.getProductById(id);
@@ -80,6 +85,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/productFormSubmit", method = RequestMethod.POST)
+    @Transactional
     String addOrUpdateProduct(@Valid @ModelAttribute("productForm") ProductForm productForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             productForm.setProductCategory(productCategoryService.getProductCategoryById(productForm.getProductCategory().getProductCategoryId()));
@@ -130,6 +136,7 @@ public class ProductController {
     }
 
     @GetMapping("product/{id}/image")
+    @Transactional
     public void getImageFromDataBase(@PathVariable Long id, HttpServletResponse response) throws IOException {
         Product product=new Product();
         product=productService.getProductById(id);
@@ -148,6 +155,7 @@ public class ProductController {
     }
 
     @RequestMapping("/productDelete/{id}")
+    @Transactional
     String deleteProductById(@PathVariable Long id){
         productService.deleteProductById(id);
         return "redirect:/products";

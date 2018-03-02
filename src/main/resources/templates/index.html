@@ -35,7 +35,6 @@
             <li><a href="#" th:href="@{${'/'}}" th:text="#{home}" style="color:black">Home</a></li>
         </ol>
     </div><h4>&nbsp;</h4>
-11111111111111111111111111111111
     <h4 style="font-weight: bold" th:text="#{product.categories}"></h4>
     <ul class="list-group">
         <div  th:each="value,iterStat : ${listOfAllProductCategories}">
@@ -49,8 +48,6 @@
     <div th:replace="fragments/layoutDesign ::layoutFooter">
         Layout footer
     </div>
-    <!--<div style="margin:0; padding:0; height:50px;"></div>-->
-    <!--<h4>&nbsp;</h4>-->
 </div>
 
 </body>

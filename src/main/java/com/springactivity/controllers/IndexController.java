@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by a on 18/01/2018.
  */
@@ -21,6 +23,7 @@ public class IndexController {
     }
 
     @RequestMapping("/")
+    @Transactional
     public String index(Model model){
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
         model.addAttribute("listOfAllProductCategories",productCategoryService.getListOfAllProductCategories());

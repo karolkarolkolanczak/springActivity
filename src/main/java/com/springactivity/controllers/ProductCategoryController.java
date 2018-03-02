@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by a on 13/02/2018.
  */
@@ -23,6 +25,7 @@ public class ProductCategoryController {
     }
 
     @RequestMapping("/productCategory/{id}")
+    @Transactional
     String showSelectedCategry(@PathVariable Long id, Model model){
         model.addAttribute("productCategory",productCategoryService.getProductCategoryById(id));
         model.addAttribute("ProductListByCategoryId",productService.getProductListByCategoryId(id));
@@ -30,6 +33,7 @@ public class ProductCategoryController {
     }
 
     @RequestMapping("/productCategories")
+    @Transactional
     public String productCategories(Model model){
         model.addAttribute("listOfAllproducts",productService.getListOfAllProducts());
         model.addAttribute("listOfAllProductCategories",productCategoryService.getListOfAllProductCategories());

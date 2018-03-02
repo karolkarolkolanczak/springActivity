@@ -8,10 +8,9 @@ import java.math.BigDecimal;
  */
 @Entity
 public class ProductFeatures {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productFeaturesId;
     private String color;
     private String material;

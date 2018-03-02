@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
 //    as org.hibernate.dialect.Oracle10gDialect does not support identity key generation
 //    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
 //    @SequenceGenerator(name = "id_Sequence",sequenceName = "ID_SEQ")
@@ -22,7 +22,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-    @Lob
+//    @Lob (not working on production with postgresql)
     private Byte[] image;
     @Transient
     private MultipartFile file;
