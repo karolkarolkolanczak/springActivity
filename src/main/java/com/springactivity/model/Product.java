@@ -22,7 +22,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String fotoImageUrl;
-//    @Lob (not working on production with postgresql)
+//    @Lob (not working on production with postgresql, essential for mysql)
     private Byte[] image;
     @Transient
     private MultipartFile file;

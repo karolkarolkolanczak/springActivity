@@ -17,6 +17,9 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
+    public LoginController() {
+    }
+
     @RequestMapping("/loginForm")
     String showloginForm(){
         return "loginForm";

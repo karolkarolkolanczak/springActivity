@@ -17,7 +17,7 @@ public class IndexController {
     private ProductService productService;
     private ProductCategoryService productCategoryService;
 
-    public IndexController(ProductService productService,ProductCategoryService productCategoryService) {
+    public IndexController(ProductService productService, ProductCategoryService productCategoryService) {
         this.productService = productService;
         this.productCategoryService=productCategoryService;
     }

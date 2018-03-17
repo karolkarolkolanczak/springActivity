@@ -16,7 +16,7 @@ public class Picture {
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     Long pictureId;
     private String nameOfPicture;
-//    @Lob  (not working on production with postgresql)
+//    @Lob  (not working on production with postgresql, essential for mysql)
     private Byte[] image;
     @Transient
     private MultipartFile file;
